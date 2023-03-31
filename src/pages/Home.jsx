@@ -126,11 +126,9 @@ export const ContainerCard = styled.div`
     height: fit-content;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     gap: 90px 15px;
-    @media(max-width: 930px){
-        justify-content: center;
-    }
+
 `
 
 const PokemonColor =

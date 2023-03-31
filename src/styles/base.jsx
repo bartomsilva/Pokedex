@@ -18,9 +18,9 @@ const Base = createGlobalStyle`
     @media(max-width:768px){
       ::-webkit-scrollbar{
         display: none;
-      }
+      }    
     }
-      
+    
 	}
 
 `

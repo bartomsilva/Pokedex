@@ -59,20 +59,12 @@ export const CardTypes = styled.div`
     width: fit-content;
     gap: 15px;
     
-    /* button{
-        width: fit-content;
-        padding: 5px 25px;
-        border: 1px dashed rgba(255, 255, 255, 0.47);
-        border-radius: 8px;
-
-    } */
-
 `
 
 export const ContainerType = styled.div`
     width: fit-content;
     height: 31px;
-    display: flex;
+    display: ${({visible})=>visible?"flex":"none"};
     justify-content: space-between;
     gap: 10px;
     padding: 5px;
@@ -88,12 +80,14 @@ export const CardDetail = styled.div`
     justify-content: space-between;
     align-items: center;
     padding-bottom: 30px;
-    
     a{
+        font-family: 'Poppins';
         text-decoration: underline;
-        cursor: pointer;
+        cursor: pointer;     
+    
+     
     }
-
+    
     
 `
 export const BtnCapture = styled.button`
@@ -106,12 +100,12 @@ export const BtnCapture = styled.button`
         font-style: normal;
         font-weight: 400;
         z-index: 999999;
-        cursor: pointer;
+        cursor: pointer;          
+        
 `
     
     
 export const ImgType = styled.img`
-    /* position: absolute; */
     width: 18px;
     z-index:9999999;
 `
@@ -121,7 +115,9 @@ export default function PokeCard(key, char, colorbg, imageAbility) {
     const [id, setId] = useState({ id: "" })
     const [imageFront, setImageFront] = useState({ image: "" })
     const [types, setTypes] = useState({ type1: "", type2: "" })
-    const [imgAbility, setImgAbility] = useState({ ìmg1: null, img2: null, color1: null, color2: null })
+    const [abilities, setabilities] = useState({ ìmg1: null, img2: null,
+         color1: null, color2: null,
+         visible1:true, visible2:false })
 
     function formatId(id) {
         id = id.toString()
@@ -131,6 +127,7 @@ export default function PokeCard(key, char, colorbg, imageAbility) {
         return "#" + id
     }
       
+
     function loadDeatail(url) {
 
         (async () => {
@@ -153,11 +150,13 @@ export default function PokeCard(key, char, colorbg, imageAbility) {
                     type2: ability2
                 })
 
-                setImgAbility({
+                setabilities({
                     img1: data1?.img,
                     img2: data2?.img,
                     color1: data1?.bgc,
-                    color2: data2?.bgc
+                    color2: data2?.bgc,
+                    visible1: !(data1?.bgc===undefined),
+                    visible2: !(data2?.bgc===undefined)                    
                 })
 
             }
@@ -182,13 +181,13 @@ export default function PokeCard(key, char, colorbg, imageAbility) {
             <ImgPokemonShadowCard src={ballCard} alt="image background card" />
 
             <CardTypes>
-                <ContainerType color={imgAbility?.color1}>
-                    <ImgType src={imgAbility?.img1} alt="" />
-                    {types.type1}
-                </ContainerType>
-                <ContainerType color={imgAbility?.color2}>
-                    <ImgType src={imgAbility?.img2} alt="" />
+                <ContainerType color={abilities?.color2} visible={abilities.visible2}>
+                    <ImgType src={abilities?.img2} alt="" />
                     {types.type2}
+                </ContainerType>
+                <ContainerType color={abilities?.color1} visible={abilities.visible1}>
+                    <ImgType src={abilities?.img1} alt="" />
+                    {types.type1}
                 </ContainerType>
             </CardTypes>
 
