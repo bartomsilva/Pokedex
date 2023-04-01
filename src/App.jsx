@@ -7,10 +7,12 @@ import { loadData } from './components/data/LoadData'
 function App() {
 
   const {setPokemons} = useContext(PokedexContext)
+  const {setPokedex} = useContext(PokedexContext)
 
   useEffect(()=>{
     
     loadData("https://pokeapi.co/api/v2/pokemon",setPokemons) 
+    loadData("https://pokeapi.co/api/v2/pokemon",setPokedex) 
 
   },[])
 

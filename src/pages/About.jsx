@@ -1,5 +1,6 @@
 
 import styled from "styled-components";
+import Header from "../components/header/Header";
 
 const Container = styled.div`
     text-align: center;
@@ -11,6 +12,7 @@ function About() {
     <Container>
 
       <header>
+        <Header/>
         <div><h1>Sobre este projeto</h1></div>
       </header>
 

@@ -5,11 +5,13 @@ export default function PokedexProvider({ children }) {
 
   // all pokemons
   const [pokemons, setPokemons] = useState([])
+  const [pokedex, setPokedex] = useState([])
   
     const context = {
     pokemons,
     setPokemons,
-
+    pokedex,
+    setPokedex
   }
   
   return (

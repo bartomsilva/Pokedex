@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from 'react-router-dom';
 import styled from "styled-components";
 import axios from "axios";
+
 import ballCard from "../../assets/BallCard.svg";
-import { Container } from "../../pages/Home";
 
 export const Card = styled.div`
   width: 420px;
   height: 210px;
-  min-width: 340px;
+  min-width: 335px;
   position: relative;
   background-color: ${({ colorbg }) => colorbg};
   color: #fff;
@@ -154,14 +155,12 @@ export default function PokeCard(key, char, colorbg, dataAbiliti) {
   const [id, setId] = useState({ id: "" });
   const [imageFront, setImageFront] = useState({ image: "" });
   const [types, setTypes] = useState({ type1: "", type2: "" });
-  const [abilities, setabilities] = useState({
-    ìmg1: null,
-    img2: null,
-    color1: null,
-    color2: null,
-    visible1: true,
-    visible2: false,
-  });
+  const [abilities, setabilities] =
+    useState({
+      ìmg1: null, img2: null,
+      color1: null, color2: null,
+      visible1: true, visible2: true,
+    });
 
   function formatId(id) {
     id = id.toString();
@@ -171,6 +170,9 @@ export default function PokeCard(key, char, colorbg, dataAbiliti) {
     return "#" + id;
   }
 
+  const location = useLocation()
+  const navigate = useNavigate()
+
   // função para deixar a primeira letra maiuscula
   function firstLetterUpper(text) {
     if (!text) return "";
@@ -179,30 +181,37 @@ export default function PokeCard(key, char, colorbg, dataAbiliti) {
   }
 
   function loadDeatail(url) {
+
     (async () => {
       try {
         // lendo a dados do pokemon
         const response = await axios.get(url);
         // pegando a imagem de frente
         const image = response.data.sprites.other["official-artwork"].front_default;
+
         // pegando as habilidades
         const abiliti1 = response.data.types[0]?.type.name;
         const abiliti2 = response.data.types[1]?.type.name;
+
         // buscando o objeto das habilidades
         const data1 = dataAbiliti.find((abiliti) => abiliti.type === abiliti1);
         const data2 = dataAbiliti.find((abiliti) => abiliti.type === abiliti2);
+
         // corigindo o id para o formato #01
-        setId({id: formatId(response.data.id)});
+        setId({ id: formatId(response.data.id) });
+
         // salvando a imagem no estado
         setImageFront({
           image: image,
         });
+
         //salvando as habilidades no estado
         // junta no mesmo objeto???
-        setTypes({  
+        setTypes({
           type1: abiliti1,
           type2: abiliti2,
         });
+
         //salvando a imagem e cor no estado
         setabilities({
           img1: data1?.img,
@@ -223,6 +232,7 @@ export default function PokeCard(key, char, colorbg, dataAbiliti) {
 
   return (
     <Card key={key} colorbg={colorbg}>
+
       <IdentificationPokemon>
         <Id>{id?.id}</Id>
         <TitleCard>{firstLetterUpper(char.name)}</TitleCard>
@@ -232,20 +242,30 @@ export default function PokeCard(key, char, colorbg, dataAbiliti) {
       <ImgPokemonShadowCard src={ballCard} alt="image background card" />
 
       <CardTypes>
+
         <ContainerType color={abilities?.color2} visible={abilities.visible2}>
           <ImgType src={abilities?.img2} alt="" />
           <Abiliti>{firstLetterUpper(types?.type2)}</Abiliti>
         </ContainerType>
+
         <ContainerType color={abilities?.color1} visible={abilities.visible1}>
           <ImgType src={abilities?.img1} alt="" />
           <Abiliti>{firstLetterUpper(types.type1)}</Abiliti>
         </ContainerType>
+
       </CardTypes>
 
       <CardDetail>
         <Detail>Detalhes</Detail>
-        <BtnCapture onClick={() => alert("30% feito!")}>Capturar!</BtnCapture>
+        {
+          location.pathname==='/'? 
+          <BtnCapture onClick={() => alert("Capturado")}>Capturar!</BtnCapture>
+          :
+          <BtnCapture onClick={() => alert("Excluido")}>Excluir!</BtnCapture>
+
+        }
       </CardDetail>
+
     </Card>
   );
 }
