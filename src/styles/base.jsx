@@ -9,7 +9,7 @@ const Base = createGlobalStyle`
     }        
 
   	body{
-    max-width: 1360px;
+    max-width: 1600px;
 		min-height: 100vh;
     margin: 0 auto;
 		background-color: #ffffff;

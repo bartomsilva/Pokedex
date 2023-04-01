@@ -58,9 +58,9 @@ export const Logo = styled.img`
     }
 
     @media(max-width:480px){
-        width: 150px;
+        width: 140px;
         left: 0;
-        margin-left: 20px;
+        margin-left: 15px;
         transform: translate(0%,-50%);
     }
             
@@ -85,15 +85,15 @@ export const BtnPokedex = styled.button`
 
 
     @media(max-width:768px){
-        width: 150px;
-        height: 50px;   
+        width: 130px;
+        height: 40px;   
         font-size: 90%;
     }
 
     @media(max-width:480px){
-        width: 130px;
+        width: 120px; 
         height: 40px;  
-        font-size: 80%;
+        font-size: 80%; 
         margin-right: 20px;
     }   
 
@@ -102,7 +102,6 @@ export const BtnPokedex = styled.button`
 export const Main = styled.main`
     width: 100%;
     min-height: 100vh;  
-    padding: 0y 20px;
     
 `
 export const HeaderCards = styled.div`
@@ -111,13 +110,23 @@ export const HeaderCards = styled.div`
     display: flex;
     align-items: center;
     padding: 0 25px;
+
+    @media(max-width:480px){
+        height: 100px;
+        justify-content: center;
+    }
 `
 
 export const Title = styled.p`
-     font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
     color: #fff;
-    font-size: 32px;
-    font-weight: normal;
+    font-size: 47px;   
+    @media(max-width:480px){
+        font-size: 33px;
+    }
+ 
     
 `
 export const ContainerCard = styled.div`
@@ -131,7 +140,7 @@ export const ContainerCard = styled.div`
 
 `
 
-const PokemonColor =
+const PokemonColorBG =
     ['#739f92', "#739f92", "#739f92",
         "#eaac7d", "#eaac7d", "#eaac7d",
         "#71c3ff", "#71c3ff", "#71c3ff",
@@ -141,7 +150,7 @@ const PokemonColor =
         "#bf9763", "#bf9763"]
 
 
-export const imageAbility = [
+export const dataAbiliti = [
     {
         type: 'poison',
         img: poisonI,
@@ -242,7 +251,7 @@ export default function Home() {
 
     return (
         <Container>
-            <Header>
+           <Header>
                 <Logo src={logo} alt="" />
                 <BtnPokedex>Pokédex</BtnPokedex>
             </Header>
@@ -253,7 +262,7 @@ export default function Home() {
                 <ContainerCard>
                     {
                         pokemons?.map((pokemon, idx) => {
-                            return PokeCard(idx, pokemon, PokemonColor[idx],imageAbility)
+                            return PokeCard(idx, pokemon, PokemonColorBG[idx], dataAbiliti)
                         })
                     }
                 </ContainerCard>
