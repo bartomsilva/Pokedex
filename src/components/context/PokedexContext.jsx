@@ -6,14 +6,17 @@ export default function PokedexProvider({ children }) {
   // all pokemons
   const [pokemons, setPokemons] = useState([])
   const [pokedex, setPokedex] = useState([])
-  
-    const context = {
+  const [validPokemons, setValidPokemons]=useState([])
+
+  const context = {
     pokemons,
     setPokemons,
     pokedex,
-    setPokedex
+    setPokedex,
+    validPokemons,
+    setValidPokemons
   }
-  
+
   return (
     <PokedexContext.Provider value={context}>
       {children}

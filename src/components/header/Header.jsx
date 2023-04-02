@@ -13,7 +13,10 @@ export const Header_ = styled.header`
     height: 130px;
     background-color: #fff;
     display: flex;
-    justify-content: center;
+    justify-content: center;    
+    
+         
+    
 `
 export const NavMenu = styled.nav`
     position: absolute;

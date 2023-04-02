@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useLocation, useNavigate } from 'react-router-dom';
 import styled from "styled-components";
 import axios from "axios";
-
 import ballCard from "../../assets/BallCard.svg";
+import { PokedexContext } from "../context/PokedexContext";
+
 
 export const Card = styled.div`
   width: 420px;
@@ -151,6 +152,8 @@ export const Abiliti = styled.span`
   font-size: 14px;
 `;
 
+
+
 export default function PokeCard(key, char, colorbg, dataAbiliti) {
   const [id, setId] = useState({ id: "" });
   const [imageFront, setImageFront] = useState({ image: "" });
@@ -172,6 +175,7 @@ export default function PokeCard(key, char, colorbg, dataAbiliti) {
 
   const location = useLocation()
   const navigate = useNavigate()
+  const { pokedex, setPokedex } = useContext(PokedexContext)
 
   // função para deixar a primeira letra maiuscula
   function firstLetterUpper(text) {
@@ -231,6 +235,7 @@ export default function PokeCard(key, char, colorbg, dataAbiliti) {
   }, []);
 
   return (
+
     <Card key={key} colorbg={colorbg}>
 
       <IdentificationPokemon>
@@ -258,14 +263,22 @@ export default function PokeCard(key, char, colorbg, dataAbiliti) {
       <CardDetail>
         <Detail>Detalhes</Detail>
         {
-          location.pathname==='/'? 
-          <BtnCapture onClick={() => alert("Capturado")}>Capturar!</BtnCapture>
-          :
-          <BtnCapture onClick={() => alert("Excluido")}>Excluir!</BtnCapture>
+          location.pathname === '/' ?
+            <BtnCapture onClick={() => capturePokemon(char, pokedex, setPokedex)}>Capturar!</BtnCapture>
+            :
+            <BtnCapture onClick={() => alert("Excluido")}>Excluir!</BtnCapture>
 
         }
       </CardDetail>
 
     </Card>
   );
+}
+
+
+function capturePokemon(char, pokedex, setPokedex) {
+  const copyPokedex = [...pokedex]
+  copyPokedex.push({name: char.name+" ", url: char.url})
+  setPokedex(copyPokedex)
+
 }

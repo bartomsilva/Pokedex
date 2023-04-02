@@ -8,10 +8,10 @@ import PokedexProvider from './components/context/PokedexContext'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
-    <Reset />
-    <Base />
     <PokedexProvider>
+      <Reset />
+      <Base />
       <App />
-    </PokedexProvider>
+    </PokedexProvider >
   </BrowserRouter>,
 )
