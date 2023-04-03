@@ -3,6 +3,7 @@ import axios from "axios";
 
 // impagem de fundo do card
 import ballCard from '../../assets/BallCard.svg'
+import pokeBallAnimate from '../../assets/pokeball.gif'
 
 // imagens da habilidades
 import poisonI from '../../assets/Poison.svg'
@@ -23,6 +24,8 @@ import iceI from '../../assets/Ice.svg'
 import psychicI from '../../assets/Psychic.svg'
 import rockI from '../../assets/Rock.svg'
 import steelI from '../../assets/Steel.svg'
+
+let onStart=true
 
 export function GlobalState() {
 
@@ -180,7 +183,6 @@ export function GlobalState() {
 
     (async () => {
       setIsLoading(true)
-      console.log('carregando...........')
       try {
         const response = await axios.get('https://pokeapi.co/api/v2/pokemon')
         const validPokemons = response.data.results.filter(pokemon => noPokedex(pokemon.name))
@@ -191,7 +193,6 @@ export function GlobalState() {
       }
     })()
     setIsLoading(false)
-    console.log('fim do carregamento......')
 
   }
 
@@ -200,6 +201,22 @@ export function GlobalState() {
 
   }, [])
 
+  // cria ou lê a pokedex localStorage
+  useEffect(()=>{
+      const localPokedex = localStorage.getItem('pokedex')
+      if (localPokedex) {
+        setPokedex(JSON.parse(localPokedex))
+      } else {
+        localStorage.setItem("pokedex",JSON.stringify([]))
+      }
+  },[])
+
+  useEffect(()=>{
+    if(!onStart){
+      localStorage.setItem("pokedex",JSON.stringify(pokedex))  
+    }
+    onStart=false
+  },[pokedex])
 
   // formatação do Id
   function formatId(id) {
@@ -228,6 +245,7 @@ export function GlobalState() {
     loadData,
     cardColorBG,
     ballCard,
+    pokeBallAnimate,
     dataAbiliti,
     setIsLoading,
     isLoading,

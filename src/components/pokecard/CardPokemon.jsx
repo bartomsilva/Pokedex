@@ -70,7 +70,9 @@ export default function Card(props) {
     return (
         <>
             {context.isloading ?
-                <h1>Lendo...............</h1>
+                <S.Card>
+                    <h1>Lendo......</h1>
+                </S.Card>
                 :
                 <S.Card colorbg={context.cardColorBG[id?.id-1]}>
                     <S.IdentificationPokemon>
@@ -78,7 +80,7 @@ export default function Card(props) {
                         <S.TitleCard>{context.firstLetterUpper(name?.name)}</S.TitleCard>
                     </S.IdentificationPokemon>
 
-                    <S.ImgPokemonCard src={image?.image} alt="image pokemon" />
+                    <S.ImgPokemonCard src={image?.image}  />
                     <S.ImgPokemonShadowCard src={context.ballCard} alt="image background card" />
                     <S.CardTypes>
                  

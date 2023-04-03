@@ -12,11 +12,10 @@ function App() {
       <GlobalStyled />
       <GlobalContext.Provider value={context}>
         <Router />
-        {context.modal ? document.documentElement.style.overflow = 'clip'
+        {context.modal ? document.documentElement.style.overflow = 'hidden'
                        : document.documentElement.style.overflow = 'visible'
         }
         {context.modal ? <Modal action={context.action} /> : ''}
-
       </GlobalContext.Provider>
     </div>
   )
