@@ -14,9 +14,6 @@ export const Header_ = styled.header`
     background-color: #fff;
     display: flex;
     justify-content: center;    
-    
-         
-    
 `
 export const NavMenu = styled.nav`
     position: absolute;
@@ -91,7 +88,7 @@ export const BtnPokedex = styled.button`
 
 `
 
-export default function Header() {
+export function Header() {
 
     const location = useLocation()
     const navigate = useNavigate()

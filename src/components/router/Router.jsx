@@ -1,16 +1,15 @@
-import { Routes, Route } from 'react-router-dom'
-import Home from '../../pages/Home'
-import Pokedex from '../../pages/Pokedex'
-import Details from '../../pages/Details'
-import About from '../../pages/About'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Home } from "../../pages/home/Home";
+import { Pokedex } from "../../pages/pokedex/Pokedex";
 
-export default function Router() {
+export function Router( props ) {
+
     return (
-        <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path="/pokedex" element={<Pokedex />} />
-            <Route path="/info" element={<Details />} />
-            <Route path="/about" element={<About />} />
-        </Routes>
+        <BrowserRouter>
+            <Routes>
+                <Route path='/' element={<Home props={props} />} />
+                <Route path='/pokedex' element={<Pokedex props={props} />}/>
+            </Routes>
+        </BrowserRouter>
     )
 }
