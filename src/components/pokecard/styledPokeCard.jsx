@@ -40,7 +40,6 @@ export const ImgPokemonCard = styled.img`
     top: -50px;
 
   }
-  /* visibility: hidden; */
 
 `;
 
@@ -120,8 +119,8 @@ export const Detail = styled.a`
 export const BtnCapture = styled.button`
   width: 146px;
   height: 38px;
-  background: ${({colorBackground})=>colorBackground};
-  color: ${({colorFont})=>colorFont};
+  background: ${({ colorBackground }) => colorBackground};
+  color: ${({ colorFont }) => colorFont};
   border: none;
   border-radius: 8px;
   font-family: "Poppins";
@@ -137,11 +136,18 @@ export const BtnCapture = styled.button`
     transform: scale(0.94);
     transition-duration: 200ms;
   }
+  :hover{
+    transform: scale(1.1);
+    transition-duration: 200ms;
+    color: ${({ colorBackground }) => colorBackground};
+    background-color: ${({ colorFont }) => colorFont};
+
+  }
 `;
 
 export const ImgType = styled.img`
   width: 18px;
-  z-index: 9999999;
+  z-index: 99999;
 `;
 
 export const Abiliti = styled.span`

@@ -7,7 +7,7 @@ export default function Card(props) {
 
     const context = useContext(GlobalContext)
 
-    const { pokemon, idx } = props
+    const { pokemon } = props
     const [id, setId] = useState()
     const [name, setName] = useState()
     const [image, setImage] = useState()
@@ -72,7 +72,7 @@ export default function Card(props) {
             {context.isloading ?
                 <h1>Lendo...............</h1>
                 :
-                <S.Card key={idx} colorbg={context.cardColorBG[id?.id-1]}>
+                <S.Card colorbg={context.cardColorBG[id?.id-1]}>
                     <S.IdentificationPokemon>
                         <S.Id>{context.formatId(id?.id)}</S.Id>
                         <S.TitleCard>{context.firstLetterUpper(name?.name)}</S.TitleCard>

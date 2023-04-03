@@ -1,5 +1,4 @@
-import { useContext, useEffect, useState } from "react"
-import { useLocation, useNavigate } from "react-router-dom"
+import { useContext } from "react"
 import { GlobalContext } from "../../components/context/GlobalContext"
 import { Header } from '../../components/header/Header'
 import Card from "../../components/pokecard/CardPokemon"
@@ -16,18 +15,16 @@ export function Pokedex() {
             <Header />
 
             <Main>
-
                 <HeaderCards>
                     <TitleCard>Meus Pokémons</TitleCard>
                 </HeaderCards>
                 <ContainerCard>
                     {
                         pokedex?.map((pokemon, idx) =>
-                            <Card pokemon={pokemon} idx={idx} />
+                            <Card key={pokemon.name} pokemon={pokemon} idx={idx} />
                         )
                     }
                 </ContainerCard>
-
             </Main>
 
         </Container>

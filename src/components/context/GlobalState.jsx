@@ -26,6 +26,12 @@ import steelI from '../../assets/Steel.svg'
 
 export function GlobalState() {
 
+  // status do modal
+  const [modal, setModal] = useState(false)
+
+  // tipo de ação 
+  const [action, setAction] = useState('')
+
   // pokemons livres
   const [pokemons, setPokemons] = useState([])
 
@@ -145,6 +151,8 @@ export function GlobalState() {
     const newPokedex = [...pokedex, char]
     setPokedex(newPokedex)
     setPokemons(newList)
+    setAction('capture')
+    setModal(true)
   }
 
   // função que remove o pokemon da pokedex
@@ -153,6 +161,8 @@ export function GlobalState() {
     setPokedex(newList)
     const newPokemons = [...pokemons, char]
     setPokemons(newPokemons)
+    setAction('remove')
+    setModal(true)
   }
 
   // verifica se o Pokemon está na Pokedex
@@ -170,6 +180,7 @@ export function GlobalState() {
 
     (async () => {
       setIsLoading(true)
+      console.log('carregando...........')
       try {
         const response = await axios.get('https://pokeapi.co/api/v2/pokemon')
         const validPokemons = response.data.results.filter(pokemon => noPokedex(pokemon.name))
@@ -180,6 +191,8 @@ export function GlobalState() {
       }
     })()
     setIsLoading(false)
+    console.log('fim do carregamento......')
+
   }
 
   useEffect(() => {
@@ -220,6 +233,9 @@ export function GlobalState() {
     isLoading,
     firstLetterUpper,
     formatId,
-    noPokedex
+    noPokedex,
+    modal,
+    setModal,
+    action
   }
 }

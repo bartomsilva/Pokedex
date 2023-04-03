@@ -1,6 +1,6 @@
 
 import styled from "styled-components";
-import Header from "../components/header/Header";
+import Header from "../../components/header/Header";
 
 const Container = styled.div`
     text-align: center;

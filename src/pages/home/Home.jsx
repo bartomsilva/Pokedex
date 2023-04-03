@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext} from "react"
 import { GlobalContext } from "../../components/context/GlobalContext"
 import { Header } from '../../components/header/Header'
 import Card from "../../components/pokecard/CardPokemon"
@@ -7,7 +7,7 @@ import { HeaderCards, TitleCard, ContainerCard, Container, Main } from '../../st
 export function Home() {
 
     const context = useContext(GlobalContext)
-    const { pokemons, pokedex } = context
+    const { pokemons } = context
 
     return (
         <Container>
@@ -23,7 +23,7 @@ export function Home() {
                         pokemons?.
                         filter((pokemon) => context.noPokedex(pokemon.name)).
                         map((pokemon, idx) =>
-                            <Card pokemon={pokemon} idx={idx} />
+                            <Card key={pokemon.name} pokemon={pokemon} idx={idx} />
                         )
                     }
                 </ContainerCard>
