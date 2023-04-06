@@ -7,13 +7,14 @@ function App() {
 
   const context = GlobalState()
 
+  
   return (
     <div>
       <GlobalStyled />
       <GlobalContext.Provider value={context}>
         <Router />
-        {context.modal ? document.documentElement.style.overflow = 'hidden'
-                       : document.documentElement.style.overflow = 'visible'
+        {context.modal ? document.documentElement.style.overflow.hidden
+                       : document.documentElement.style.overflow=''
         }
         {context.modal ? <Modal action={context.action} /> : ''}
       </GlobalContext.Provider>

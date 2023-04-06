@@ -29,6 +29,10 @@ let onStart=true
 
 export function GlobalState() {
 
+  //  teste.......
+  const [infoPokemon, setInfoPokemon] = useState([])
+
+
   // status do modal
   const [modal, setModal] = useState(false)
 
@@ -184,7 +188,7 @@ export function GlobalState() {
     (async () => {
       setIsLoading(true)
       try {
-        const response = await axios.get('https://pokeapi.co/api/v2/pokemon')
+        const response = await axios.get('https://pokeapi.co/api/v2/pokemon/')
         const validPokemons = response.data.results.filter(pokemon => noPokedex(pokemon.name))
         setPokemons(validPokemons)
       }
@@ -221,11 +225,7 @@ export function GlobalState() {
   // formatação do Id
   function formatId(id) {
     if (!id) return ""
-    id = id.toString();
-    if (id.length === 1) {
-      return "#0" + id;
-    }
-    return "#" + id;
+     return "#"+String(id).padStart(2,0)
   }
 
   // função para deixar a primeira letra maiuscula
@@ -254,6 +254,8 @@ export function GlobalState() {
     noPokedex,
     modal,
     setModal,
-    action
+    action,
+    infoPokemon,
+    setInfoPokemon
   }
 }

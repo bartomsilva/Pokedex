@@ -87,12 +87,9 @@ export const BtnPokedex = styled.button`
     }   
 
 `
-
 export function Header() {
-
     const location = useLocation()
     const navigate = useNavigate()
-
     return (
         <>
             {
@@ -114,7 +111,6 @@ export function Header() {
                             <Logo src={logo} alt="" />
                             <BtnPokedex onClick={() => navigate('/pokedex')}>Pokédex</BtnPokedex>
                         </Header_>
-
             }
         </>
     )

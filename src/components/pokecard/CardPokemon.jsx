@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import { GlobalContext } from "../../components/context/GlobalContext"
 import * as S from '../../components/pokecard/styledPokeCard'
 import axios from "axios"
+import { useNavigate  } from "react-router-dom"
 
 export default function Card(props) {
 
@@ -19,6 +20,8 @@ export default function Card(props) {
     const [typeColor2, setTypeColor2] = useState()
     const [visible1, setVisible1] = useState()
     const [visible2, setVisible2] = useState()
+    
+    const navigate = useNavigate()
 
     useEffect(() => {
         ; (async () => {
@@ -67,6 +70,11 @@ export default function Card(props) {
 
     }, [context, props, context.pokedex])
 
+    function goDetail(props){
+        context.setInfoPokemon(props)
+        navigate('/details')
+    }
+
     return (
         <>
             {context.isloading ?
@@ -97,15 +105,18 @@ export default function Card(props) {
                     </S.CardTypes>
 
                     <S.CardDetail>
-                        <S.Detail>Detalhes</S.Detail>
+                        <S.Detail href="#" onClick={()=>goDetail({id: id,name: name, image: image})}>Detalhes</S.Detail>
                         {
                             location.pathname === '/' ? (
                                 <S.BtnCapture colorBackground={'#ffffff'} colorFont={'#0f0f0f'} 
                                  onClick={() => context.addPokedex(pokemon)}>Capturar!</S.BtnCapture>
-                            ) : (
+                            ) : 
+                            location.pathname === '/pokedex'? (
                                 <S.BtnCapture colorBackground={'#ff6262'} 
                                 colorFont={'#ffffff'} onClick={() => context.removePokedex(pokemon)}>Excluir</S.BtnCapture>
-                            )}
+                            )
+                            :""
+                        }
                     </S.CardDetail>
                 </S.Card>
             }
