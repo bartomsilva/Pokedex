@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { GlobalContext } from "../../components/context/GlobalContext"
 import {
     BoxImage, BoxMoves, BoxStats,
@@ -28,7 +28,6 @@ export function Details() {
         return context.firstLetterUpper(name)
     }
 
-console.log(context.infoPokemon)
     return (
         <Container>
 

@@ -1,8 +1,10 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import styled from 'styled-components'
 import logo from '../../assets/logo.svg'
 import leftArrow from '../../assets/left-arrow.svg'
 import { useLocation, useNavigate } from 'react-router-dom';
+import { GlobalContext } from '../context/GlobalContext';
+
 
 export const Header_ = styled.header`
     position: relative;
@@ -64,7 +66,7 @@ export const BtnPokedex = styled.button`
     transform: translateY(-50%);
     width: 165px;
     height: 50px;
-    background-color: #33A4F5;
+    background-color: ${({color})=>color};
     border: none;
     border-radius: 8px;
     font-family: 'Poppins', sans-serif;
@@ -87,18 +89,27 @@ export const BtnPokedex = styled.button`
     }   
 
 `
+
 export function Header() {
     const location = useLocation()
     const navigate = useNavigate()
+    const context = useContext(GlobalContext)
+
+    function deletePokemon(){
+        context.removePokedex({name:context.infoPokemon.name})
+        navigate('/pokedex')  
+    
+    }
+    
     return (
         <>
             {
                 location.pathname === "/" ?
                     <Header_>
                         <Logo src={logo} alt="" />
-                        <BtnPokedex onClick={() => navigate('/pokedex')}>Pokédex</BtnPokedex>
+                        <BtnPokedex color={'#33a4f5'} onClick={() => navigate('/pokedex')}>Pokédex</BtnPokedex>
                     </Header_>
-                    : location.pathname === "/pokedex" ?
+                : location.pathname === "/pokedex" ?
                         <Header_>
                             <NavMenu>
                                 <NavLeftArrow src={leftArrow} alt="" />
@@ -106,10 +117,18 @@ export function Header() {
                             </NavMenu>
                             <Logo src={logo} alt="" />
                         </Header_>
-                        :
+                :
                         <Header_>
+                            <NavMenu>
+                                <NavLeftArrow src={leftArrow} alt="" />
+                                <NavBtnAllPokemons onClick={() => navigate('/')} href="#">Todos Pokémons</NavBtnAllPokemons>
+                            </NavMenu>
                             <Logo src={logo} alt="" />
-                            <BtnPokedex onClick={() => navigate('/pokedex')}>Pokédex</BtnPokedex>
+                            {
+                                context.infoPokemon.inPokedex?
+                                <BtnPokedex color={"#ff6262"} onClick={()=> deletePokemon()}>Excluir da Pokédex</BtnPokedex>                        
+                                :""
+                            }
                         </Header_>
             }
         </>

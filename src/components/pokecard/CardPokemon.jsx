@@ -152,7 +152,8 @@ export default function Card(props) {
                                 visible2,
                                 stats: stats,
                                 moves: moves,
-                                colorBackGround: colorBackGround.color
+                                colorBackGround: colorBackGround.color,
+                                inPokedex: location.pathname === "/pokedex"
                             })}>Detalhes</S.Detail>
                         {
                             location.pathname === '/' ? (
