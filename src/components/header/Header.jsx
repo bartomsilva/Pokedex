@@ -96,11 +96,11 @@ export function Header() {
     const context = useContext(GlobalContext)
 
     function deletePokemon(){
-        context.removePokedex({name:context.infoPokemon.name})
-        navigate('/pokedex')  
-    
+        context.removePokedex(context.infoPokemon.pokemon)
+        navigate('/pokedex')      
     }
     
+    console.log(context.infoPokemon)
     return (
         <>
             {
@@ -117,7 +117,7 @@ export function Header() {
                             </NavMenu>
                             <Logo src={logo} alt="" />
                         </Header_>
-                :
+                : // aqui entra no /detail
                         <Header_>
                             <NavMenu>
                                 <NavLeftArrow src={leftArrow} alt="" />
@@ -125,7 +125,7 @@ export function Header() {
                             </NavMenu>
                             <Logo src={logo} alt="" />
                             {
-                                context.infoPokemon.inPokedex?
+                                context.infoPokemon.isPokedex.includes('pokedex') ?
                                 <BtnPokedex color={"#ff6262"} onClick={()=> deletePokemon()}>Excluir da Pokédex</BtnPokedex>                        
                                 :""
                             }

@@ -28,7 +28,7 @@ let onStart = true
 
 export function GlobalState() {
 
-  //  teste.......
+  //  todas informação para a pagina delalhes 
   const [infoPokemon, setInfoPokemon] = useState([])
 
   // status do modal
@@ -39,24 +39,13 @@ export function GlobalState() {
 
   // pokemons livres
   const [pokemons, setPokemons] = useState([])
+  const [pokemonsCopy, setPokemonsCopy] = useState([])
 
   // pokemons na pokedex
   const [pokedex, setPokedex] = useState([])
 
   // status da leitura da API
   const [isLoading, setIsLoading] = useState(true)
-
-  // cor de fundo dos Cards ( figma )
-  // const cardColorBG =
-  //   [
-  //     "#739f92", "#739f92", "#739f92",
-  //     "#eaac7d", "#eaac7d", "#eaac7d",
-  //     "#71c3ff", "#71c3ff", "#71c3ff",
-  //     "#76a966", "#76a966", "#76a966",
-  //     "#76a966", "#76a966", "#76a966",
-  //     "#bf9763", "#bf9763", "#bf9763",
-  //     "#bf9763", "#bf9763"]
-
 
   // cor de fundo ofiial 
   const CardColorOficialBG =
@@ -173,8 +162,10 @@ export function GlobalState() {
       setIsLoading(true)
       try {
         const response = await axios.get('https://pokeapi.co/api/v2/pokemon/')
-        const validPokemons = response.data.results.filter(pokemon => noPokedex(pokemon.name))
-        setPokemons(validPokemons)
+        // const validPokemons = response.data.results.filter(pokemon => noPokedex(pokemon.name))
+        // setPokemons(validPokemons)
+        setPokemons(response.data.results)
+        setPokemonsCopy(response.data.results)        
       }
       catch (error) {
         console.log(error)
@@ -226,7 +217,7 @@ export function GlobalState() {
     setPokedex,
     addPokedex,
     removePokedex,
-    loadData,
+    pokemonsCopy,
     ballCard,
     pokeBallAnimate,
     dataAbiliti,

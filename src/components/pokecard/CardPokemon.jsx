@@ -94,7 +94,7 @@ export default function Card(props) {
             }
         })()
 
-    }, [props, context.pokedex])
+    }, [context, props, context.pokedex])
 
     function goDetail(props) {
         context.setInfoPokemon(props)
@@ -153,7 +153,9 @@ export default function Card(props) {
                                 stats: stats,
                                 moves: moves,
                                 colorBackGround: colorBackGround.color,
-                                inPokedex: location.pathname === "/pokedex"
+                                pokemon,
+                                isPokedex: location.pathname
+                                
                             })}>Detalhes</S.Detail>
                         {
                             location.pathname === '/' ? (

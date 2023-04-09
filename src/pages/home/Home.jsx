@@ -1,4 +1,4 @@
-import { useContext} from "react"
+import { useContext, useEffect} from "react"
 import { GlobalContext } from "../../components/context/GlobalContext"
 import { Header } from '../../components/header/Header'
 import Card from "../../components/pokecard/CardPokemon"
@@ -9,11 +9,13 @@ export function Home() {
     const context = useContext(GlobalContext)
     const { pokemons } = context
 
+    useEffect(()=>{
+        context.setPokemons(context.pokemonsCopy)
+    },[])
+    
     return (
         <Container>
-
             <Header />
-
             <Main>
                 <HeaderCards>
                     <TitleCard>Todos Pokémons</TitleCard>

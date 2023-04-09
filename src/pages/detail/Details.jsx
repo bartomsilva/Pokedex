@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import { GlobalContext } from "../../components/context/GlobalContext"
 import {
     BoxImage, BoxMoves, BoxStats,
@@ -18,6 +18,7 @@ export function Details() {
 
     const context = useContext(GlobalContext)
 
+
     function correctState(name) {
         if (name === "special-attack") {
             return "Sp. Atk"
@@ -27,7 +28,6 @@ export function Details() {
         }
         return context.firstLetterUpper(name)
     }
-
     return (
         <Container>
 
@@ -41,7 +41,7 @@ export function Details() {
                         <SectionLeft>
                             <ContainerImage>
                                 <BoxImage>
-                                    <img src={context.infoPokemon?.imgFront} alt="" />
+                                    <img src={context.infoPokemon?.imgFront} alt="" />                               
                                 </BoxImage>
                                 <BoxImage>
                                     <img src={context.infoPokemon?.imgBack} alt="" />
