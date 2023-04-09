@@ -71,7 +71,6 @@ export const TitleCard = styled.p`
 
 export const CardTypes = styled.div`
   position: absolute;
-  top: 100px;
   top: 80px;
   display: flex;
   width: fit-content;
