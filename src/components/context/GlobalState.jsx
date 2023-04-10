@@ -70,63 +70,117 @@ export function GlobalState() {
   // tabela das halidades nome / imagem / cor
   const dataAbiliti = [
     {
-      type: 'poison', img: iPoison, bgc: '#AD61AE', colorCard: '#BE41BE'
+      type: 'poison',
+      img: iPoison,
+      bgc: '#AD61AE',
+      colorCard: '#BE41BE'
     },
     {
-      type: 'grass', img: iGrass, bgc: '#70B873', colorCard: '#739f92'
+      type: 'grass',
+      img: iGrass,
+      bgc: '#70B873',
+      colorCard: '#739f92'
     },
     {
-      type: 'fire', img: iFire, bgc: '#F44900', colorCard: '#eaac7d'
+      type: 'fire',
+      img: iFire,
+      bgc: '#F44900',
+      colorCard: '#eaac7d'
     },
     {
-      type: 'flying', img: iFlying, bgc: '#6892B0', colorCard: '#3394A1'
+      type: 'flying',
+      img: iFlying,
+      bgc: '#6892B0',
+      colorCard: '#3394A1'
     },
     {
-      type: 'water', img: iWater, bgc: '#33A4F5', colorCard: '#71c3ff'
+      type: 'water',
+      img: iWater,
+      bgc: '#33A4F5',
+      colorCard: '#71c3ff'
     },
     {
-      type: 'bug', img: iBug, bgc: '#316520', colorCard: '#76a966'
+      type: 'bug',
+      img: iBug,
+      bgc: '#316520',
+      colorCard: '#76a966'
     },
     {
-      type: 'normal', img: iNormal, bgc: '#8A8A8A', colorCard: '#bf9763'
+      type: 'normal',
+      img: iNormal,
+      bgc: '#8A8A8A',
+      colorCard: '#bf9763'
     },
     {
-      type: 'dark', img: iDark, bgc: '#5C5365', colorCard: '#3C5555'
+      type: 'dark',
+      img: iDark,
+      bgc: '#5C5365',
+      colorCard: '#3C5555'
     },
     {
-      type: 'dragon', img: iDragon, bgc: '#0A6CBF', colorCard: '#0B1ABA'
+      type: 'dragon',
+      img: iDragon,
+      bgc: '#0A6CBF',
+      colorCard: '#0B1ABA'
     },
     {
-      type: 'eletric', img: iEletric, bgc: '#F4D23B', colorCard: '#C1D131'
+      type: 'eletric',
+      img: iEletric,
+      bgc: '#F4D23B',
+      colorCard: '#C1D131'
     },
     {
-      type: 'fairy', img: iFairy, bgc: '#EC8FE6', colorCard: '#B18AE1'
+      type: 'fairy',
+      img: iFairy,
+      bgc: '#EC8FE6',
+      colorCard: '#B18AE1'
     },
     {
-      type: 'fighting', img: iFighting, bgc: '#CE4069', colorCard: '#AB4A69'
+      type: 'fighting',
+      img: iFighting,
+      bgc: '#CE4069',
+      colorCard: '#AB4A69'
     },
     {
-      type: 'ghost', img: iGhost, bgc: '#5269ac', colorCard: '#5a59aF'
+      type: 'ghost',
+      img: iGhost,
+      bgc: '#5269ac',
+      colorCard: '#5a59aF'
     },
     {
-      type: 'ground', img: iGround, bgc: '#D97745', colorCard: '#D6663A'
+      type: 'ground',
+      img: iGround,
+      bgc: '#D97745',
+      colorCard: '#D6663A'
     },
     {
-      type: 'ice', img: iIce, bgc: '#74CEC0', colorCard: '#74BCCA'
+      type: 'ice',
+      img: iIce,
+      bgc: '#74CEC0',
+      colorCard: '#74BCCA'
     },
     {
-      type: 'psychic', img: iPsychic, bgc: '#F67176', colorCard: '#F55265'
+      type: 'psychic',
+      img: iPsychic,
+      bgc: '#F67176',
+      colorCard: '#F55265'
     },
     {
-      type: 'rock', img: iRock, bgc: '#C7B78B', colorCard: '#C6B32B'
+      type: 'rock',
+      img: iRock,
+      bgc: '#C7B78B',
+      colorCard: '#C6B32B'
     },
     {
-      type: 'steel', img: iSteel, bgc: '#BBBBBB', colorCard: '#B1B1C1'
+      type: 'steel',
+      img: iSteel,
+      bgc: '#BBBBBB',
+      colorCard: '#B1B1C1'
     },
   ]
 
   // função que adiciona o pokemon na pokedex
-  function addPokedex(char) {
+  const addPokedex = (char) => {
     const newList = pokemons.filter(pokemon => pokemon.name !== char.name)
     const newPokedex = [...pokedex, char]
     setPokedex(newPokedex)
@@ -136,7 +190,7 @@ export function GlobalState() {
   }
 
   // função que remove o pokemon da pokedex
-  function removePokedex(char) {
+  const removePokedex = (char) => {
     const newList = pokedex.filter(pokemon => pokemon.name !== char.name)
     setPokedex(newList)
     const newPokemons = [...pokemons, char]
@@ -146,7 +200,7 @@ export function GlobalState() {
   }
 
   // verifica se o Pokemon está na Pokedex
-  function noPokedex(name) {
+  const noPokedex = (name) => {
     const result = pokedex.filter(pokemon => pokemon.name === name)
     if (result && result.length > 0) {
       return false
@@ -156,23 +210,18 @@ export function GlobalState() {
   }
 
   // Leitura dos dados da API
-  function loadData() {
-
-    (async () => {
-      setIsLoading(true)
-      try {
-        const response = await axios.get('https://pokeapi.co/api/v2/pokemon/')
-        // const validPokemons = response.data.results.filter(pokemon => noPokedex(pokemon.name))
-        // setPokemons(validPokemons)
-        setPokemons(response.data.results)
-        setPokemonsCopy(response.data.results)        
-      }
-      catch (error) {
-        console.log(error)
-      }
-    })()
+  const loadData = async () => {
+    setIsLoading(true)
+    try {
+      const response = await axios.get('https://pokeapi.co/api/v2/pokemon/')
+      setPokemons(response.data.results)
+      //  use in page home, for order pokémons )
+      setPokemonsCopy(response.data.results)
+    }
+    catch (error) {
+      console.log(error)
+    }
     setIsLoading(false)
-
   }
 
   useEffect(() => {

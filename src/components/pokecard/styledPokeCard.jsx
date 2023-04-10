@@ -43,7 +43,7 @@ export const ImgPokemonCard = styled.img`
 
 `;
 
-export const ImgPokemonShadowCard = styled.img`
+export const ImgShadowCard = styled.img`
   position: absolute;
   width: 220px;
   height: 230px;

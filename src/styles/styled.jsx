@@ -53,7 +53,6 @@ export const ContainerCard = styled.div`
     gap: 90px 15px;
     min-width: 340px;
     background-color: ${({ color }) => color};
-    
     position: relative;
 
 
@@ -72,6 +71,14 @@ export const DetailCard = styled.div`
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+
+    @media(max-width: 768px){
+        width: 100vw;
+        height: fit-content;
+        position: static;
+        display: flex;
+        flex-direction: column-reverse;
+    }
 `
 
 export const SectionLeft = styled.section`
@@ -81,7 +88,11 @@ export const SectionLeft = styled.section`
     width: 380px;
     height: 370px;
     padding: 10px 0;
- 
+
+    @media(max-width:768px){
+        height: fit-content;
+    }
+    
 `
 export const ContainerImage = styled.div`
     display: flex;
@@ -89,7 +100,6 @@ export const ContainerImage = styled.div`
     align-items: center;
     flex-direction: column;
     gap: 15px;
-
     height: 350px;
   `
 export const BoxImage = styled.div`    
@@ -102,6 +112,9 @@ export const BoxImage = styled.div`
     height: 150px;
     background-color: #fff;
     z-index: 100;
+    img{
+        width: 100%;
+    }
 `
 
 export const BoxStats = styled.div`
@@ -110,9 +123,7 @@ export const BoxStats = styled.div`
     background-color: #fff;   
     border-radius: 12px ;
     padding: 15px;
-
-    
-
+  
 `
 export const TitleInfo = styled.h2`
 
@@ -136,8 +147,8 @@ export const Stats = styled.div`
     min-height:fit-content;
     margin-top: 20px;
     display: grid;
-    grid-template-columns: auto auto 80px;
-    gap: 18px;
+    grid-template-columns: 50px 30px 80px;
+    gap: 12px;
     justify-content: flex-start;
 `
 export const Moves = styled.div`
@@ -162,18 +173,22 @@ border-radius: 12px;
 `
 export const StatsName = styled.div`
     text-align: right;
-    height: 30px;
+    height: 20px;
+    font-size: 14px;
 `
 
 export const StatsVal = styled.div`
-    height: 30px;
+    height: 20px;
     text-align: center;
+    font-size: 14px;
+    font-weight: ${({bold})=>bold?"700":"normal"} ;
+
 `
 
 export const StatsBar = styled.div`
     background-color: red;
     width: ${({ w }) => w + "%"};
-    line-height: 2.5;
+    /* line-height: 2.5; */
     height: 10px;
     margin-top: 3px;
     z-index: 99999;
@@ -186,7 +201,16 @@ export const SectionRight = styled.section`
     height: 370px;
     display: flex;
     flex-direction: column;
-    padding: 10px 0;
+    padding: 10px;
+        
+    @media(max-width: 768px){           
+        height: fit-content;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+    }
 
 `
 export const DetailId = styled.p`
@@ -210,10 +234,16 @@ export const ImgBackGround = styled.img`
     top: 0;
     right: 10px;
     height: 100%;
+    @media(max-width: 768px){
+        display: none;
+    }
 `
 export const ImgPokemon = styled.img`
     position: absolute;
     top: -85px;
     right: 10px;
     width: 160px;
+    @media(max-width: 768px){
+        position: static;
+    }
  `

@@ -9,7 +9,7 @@ function App() {
 
   
   return (
-    <div>
+    <>
       <GlobalStyled />
       <GlobalContext.Provider value={context}>
         <Router />
@@ -18,7 +18,7 @@ function App() {
         }
         {context.modal ? <Modal action={context.action} /> : ''}
       </GlobalContext.Provider>
-    </div>
+    </>
   )
 }
 

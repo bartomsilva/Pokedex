@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { GlobalContext } from "../../components/context/GlobalContext"
 import {
     BoxImage, BoxMoves, BoxStats,
@@ -12,12 +12,12 @@ import {
 } from '../../styles/styled'
 
 import { Header } from '../../components/header/Header'
-import { CardType } from '../../components/cardType/CartType'
+import { CardType } from '../../components/cardtype/CartType'
 
 export function Details() {
 
     const context = useContext(GlobalContext)
-
+    let statsTotal = 0
 
     function correctState(name) {
         if (name === "special-attack") {
@@ -28,9 +28,17 @@ export function Details() {
         }
         return context.firstLetterUpper(name)
     }
+
+    function renderStats(stats, index) {
+        statsTotal += stats.base_stat
+        return (<Stats key={index}>
+            <StatsName >{correctState(stats.stat.name)}</StatsName>
+            <StatsVal>{stats.base_stat}</StatsVal>
+            <StatsBar w={stats.base_stat}></StatsBar>
+        </Stats>)
+    }
     return (
         <Container>
-
             <Header />
             <Main>
                 <HeaderCards>
@@ -41,7 +49,7 @@ export function Details() {
                         <SectionLeft>
                             <ContainerImage>
                                 <BoxImage>
-                                    <img src={context.infoPokemon?.imgFront} alt="" />                               
+                                    <img src={context.infoPokemon?.imgFront} alt="" />
                                 </BoxImage>
                                 <BoxImage>
                                     <img src={context.infoPokemon?.imgBack} alt="" />
@@ -49,15 +57,15 @@ export function Details() {
                             </ContainerImage>
                             <BoxStats>
                                 <TitleInfo>Base stats</TitleInfo>
-                                <Stats>                                    {
-                                    context.infoPokemon.stats.map((stats, index) =>
-                                        <>
-                                            <StatsName key={stats.stat.name}>{correctState(stats.stat.name)}</StatsName>
-                                            <StatsVal key={index}>{stats.base_stat}</StatsVal>
-                                            <StatsBar key={index + stats.base_stat*2} w={stats.base_stat}></StatsBar>
-                                        </>
-                                    )
-                                }
+                                <>
+                                    {
+                                        context.infoPokemon.stats.map((stats, index) =>
+                                            renderStats(stats, index))
+                                    }
+                                </>
+                                <Stats>
+                                    <StatsName>Total:</StatsName>
+                                    <StatsVal bold={true}>{statsTotal}</StatsVal>
                                 </Stats>
                             </BoxStats>
                         </SectionLeft>
@@ -74,29 +82,27 @@ export function Details() {
                                     text={context.infoPokemon?.type1} />
                                 {
                                     context.infoPokemon?.visible2 ?
-                                    <CardType h={'31px'}
-                                    bgc={context.infoPokemon?.typeColor2}
-                                    img={context.infoPokemon?.typeImg2}
-                                    imgH={'18px'}
-                                    text={context.infoPokemon?.type2} />:""
+                                        <CardType h={'31px'}
+                                            bgc={context.infoPokemon?.typeColor2}
+                                            img={context.infoPokemon?.typeImg2}
+                                            imgH={'18px'}
+                                            text={context.infoPokemon?.type2} /> : ""
                                 }
                             </ContainerTypes>
                             <BoxMoves>
                                 <TitleInfo>Moves</TitleInfo>
                                 <Moves>
-                                {
-                                    context.infoPokemon.moves.map((moves, index) =>
+                                    {
+                                        context.infoPokemon.moves.map((moves, index) =>
                                             <Move key={index}>{moves.move.name}</Move>
-                                      
-                                    )
-                                }
+                                        )
+                                    }
                                 </Moves>
                             </BoxMoves>
                         </SectionRight>
                     </DetailCard>
                 </ContainerCard>
             </Main>
-
         </Container>
     )
 }

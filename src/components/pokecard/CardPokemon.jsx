@@ -3,7 +3,8 @@ import { GlobalContext } from "../../components/context/GlobalContext"
 import * as S from '../../components/pokecard/styledPokeCard'
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
-import { CardType } from "../cardType/CartType"
+import { CardType } from "../cardtype/CartType"
+import { gotoDetail } from "../router/Coordination"
 
 export default function Card(props) {
 
@@ -81,12 +82,6 @@ export default function Card(props) {
                 // movimento do pokémon
                 setMoves(getPokemon.data.moves.filter( (m,index) => index <=3))
 
-                // carrega a cor oficial - não utilizada no projeto da Labenu
-                // const urlColor = "https://pokeapi.co/api/v2/pokemon-species/"+getPokemon.data.id+"/"
-                // const getColorPokemon = await axios.get(urlColor)
-                // setColorBackGround({color:getColorPokemon.data.color.name})
-
-                // console.log(getPokemon.data)
                 context.setIsLoading(false)
 
             } catch (error) {
@@ -97,18 +92,18 @@ export default function Card(props) {
     }, [context, props, context.pokedex])
 
     function goDetail(props) {
+        // armazena as informações necessárias para monstrar os detalhes
         context.setInfoPokemon(props)
-        navigate('/details')
+        gotoDetail(navigate)
     }
 
     return (
         <>
             {context.isloading ?
                 <S.Card>
-                    <h1>Lendo......</h1>
+                    <img src={context.pokeBallAnimate} alt="" />
                 </S.Card>
                 :
-                //  <S.Card colorbg={context.oficialColor(colorBackGround?.color)}> 
                 <S.Card colorbg={colorBackGround?.color}>
                     <S.IdentificationPokemon>
                         <S.Id>{context.formatId(id?.id)}</S.Id>
@@ -116,8 +111,10 @@ export default function Card(props) {
                     </S.IdentificationPokemon>
 
                     <S.ImgPokemonCard src={image?.image} />
-                    <S.ImgPokemonShadowCard src={context.ballCard} alt="image background card" />
+                    <S.ImgShadowCard src={context.ballCard} alt="image background card" />
+                    
                     <S.CardTypes>
+                        
                         <CardType h={'31px'}
                             bgc={typeColor1}
                             img={typeImg1}
@@ -134,6 +131,7 @@ export default function Card(props) {
                                 : ("")
                         }
                     </S.CardTypes>
+                    
                     <S.CardDetail>
                         <S.Detail href="#" onClick={() => goDetail(
                             {

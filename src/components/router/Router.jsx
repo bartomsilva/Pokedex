@@ -3,9 +3,7 @@ import { Home } from "../../pages/home/Home";
 import { Pokedex } from "../../pages/pokedex/Pokedex";
 import { Details } from '../../pages/detail/Details'
 
-
-export function Router( props ) {
-
+export function Router() {
     return (
         <BrowserRouter>
             <Routes>
