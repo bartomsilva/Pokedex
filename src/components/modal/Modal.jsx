@@ -1,24 +1,22 @@
 import { useContext } from "react";
-import { GlobalContext } from "../context/GlobalContext";
-import * as S from "./styledModal"
+import { GlobalContext } from "../../Global/GlobalStateContext";
+import * as S from "./modalStyled"
 
 export function Modal() {
 
     const context = useContext(GlobalContext)
-    // desabilidata scrool vertical
-    document.documentElement.style.overflow = 'hidden';
 
     const showModal = () => {
         switch (context?.action) {
             case 'capture':
                 return <>
                     <h2>Gotcha!</h2>
-                    <p>Pokemon adicionado a sua Pokédex</p>
+                    <p>Pokémon adicionado a sua Pokédex</p>
                 </>
             case 'remove':
                 return <>
                     <h2>Oh, no!</h2>
-                    <p>O Pokemon foi removido da sua Pokédex</p>
+                    <p>O Pokémon foi removido da sua Pokédex</p>
                 </>
             default:
                 return <>

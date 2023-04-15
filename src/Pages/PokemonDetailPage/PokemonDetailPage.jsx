@@ -1,5 +1,5 @@
-import { useContext, useEffect, useState } from 'react'
-import { GlobalContext } from "../../components/context/GlobalContext"
+import { useContext} from 'react'
+import { GlobalContext } from "../../Global/GlobalStateContext"
 import {
     BoxImage, BoxMoves, BoxStats,
     Container, ContainerCard,
@@ -11,8 +11,8 @@ import {
     SectionRight, Stats, StatsBar, StatsName, StatsVal, TitleCard, TitleInfo
 } from '../../styles/styled'
 
-import { Header } from '../../components/header/Header'
-import { CardType } from '../../components/cardtype/CartType'
+import { Header } from '../../Components/Header/Header'
+import { CardType } from '../../Components/Cardtype/CardType'
 
 export function Details() {
 
@@ -34,7 +34,8 @@ export function Details() {
         return (<Stats key={index}>
             <StatsName >{correctState(stats.stat.name)}</StatsName>
             <StatsVal>{stats.base_stat}</StatsVal>
-            <StatsBar w={stats.base_stat}></StatsBar>
+            <StatsBar w={stats.base_stat} 
+            color={correctState(stats.stat.name).includes("Sp.")?"orange":"red"}></StatsBar>
         </Stats>)
     }
     return (
@@ -75,17 +76,19 @@ export function Details() {
                             <ImgBackGround src={context.ballCard} alt="" />
                             <ImgPokemon src={context.infoPokemon?.image} alt="" />
                             <ContainerTypes>
-                                <CardType h={'31px'}
+                                <CardType
+                                    heightCard={'31px'}
                                     bgc={context.infoPokemon?.typeColor1}
-                                    img={context.infoPokemon?.typeImg1}
-                                    imgH={'18px'}
+                                    image={context.infoPokemon?.typeImg1}
+                                    imageHeight={'18px'}
                                     text={context.infoPokemon?.type1} />
                                 {
-                                    context.infoPokemon?.visible2 ?
-                                        <CardType h={'31px'}
+                                    context.infoPokemon?.type2 ?
+                                        <CardType
+                                            height={'31px'}
                                             bgc={context.infoPokemon?.typeColor2}
-                                            img={context.infoPokemon?.typeImg2}
-                                            imgH={'18px'}
+                                            image={context.infoPokemon?.typeImg2}
+                                            imageHeight={'18px'}
                                             text={context.infoPokemon?.type2} /> : ""
                                 }
                             </ContainerTypes>

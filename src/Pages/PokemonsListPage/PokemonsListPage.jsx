@@ -1,7 +1,7 @@
-import { useContext, useEffect} from "react"
-import { GlobalContext } from "../../components/context/GlobalContext"
-import { Header } from '../../components/header/Header'
-import Card from "../../components/pokecard/CardPokemon"
+import { useContext } from "react"
+import { GlobalContext } from "../../Global/GlobalStateContext"
+import { Header } from '../../Components/Header/Header'
+import Card from "../../Components/PokemonCard/PokemonCard"
 import { HeaderCards, TitleCard, ContainerCard, Container, Main } from '../../styles/styled'
 
 export function Home() {
@@ -9,10 +9,6 @@ export function Home() {
     const context = useContext(GlobalContext)
     const { pokemons } = context
 
-    useEffect(()=>{
-        context.setPokemons(context.pokemonsCopy)
-    },[])
-    
     return (
         <Container>
             <Header />
@@ -23,14 +19,13 @@ export function Home() {
                 <ContainerCard>
                     {
                         pokemons?.
-                        filter((pokemon) => context.noPokedex(pokemon.name)).
-                        map((pokemon, idx) =>
-                            <Card key={pokemon.name} pokemon={pokemon} idx={idx} />
-                        )
+                            filter((pokemon) => !pokemon.isPokedex).
+                            map((pokemon, idx) =>
+                                <Card key={pokemon.name} pokemon={pokemon} idx={idx} />
+                            )
                     }
                 </ContainerCard>
             </Main>
-
         </Container>
     )
 

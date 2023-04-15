@@ -186,12 +186,13 @@ export const StatsVal = styled.div`
 `
 
 export const StatsBar = styled.div`
-    background-color: red;
+    background-color: ${({color})=>color};
     width: ${({ w }) => w + "%"};
     /* line-height: 2.5; */
-    height: 10px;
+    height: 12px;
     margin-top: 3px;
     z-index: 99999;
+    border-radius: 4px;
 `
 export const BoxIdentification = styled.div`    
 `

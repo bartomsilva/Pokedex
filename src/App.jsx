@@ -1,22 +1,19 @@
-import { Router } from './components/router/Router'
-import { GlobalContext } from './components/context/GlobalContext'
-import { GlobalState } from './components/context/GlobalState'
 import GlobalStyled from './styles/GlobalStyled'
-import { Modal } from './components/modal/Modal'
+import { Router } from './Router/Router'
+import { GlobalContext } from './Global/GlobalStateContext'
+import { GlobalState } from './Global/GlobalState'
+import { Modal } from './Components/Modal/Modal'
+
 function App() {
 
   const context = GlobalState()
 
-  
   return (
     <>
       <GlobalStyled />
       <GlobalContext.Provider value={context}>
         <Router />
-        {context.modal ? document.documentElement.style.overflow.hidden
-                       : document.documentElement.style.overflow=''
-        }
-        {context.modal ? <Modal action={context.action} /> : ''}
+        {context.modal && <Modal action={context.action} />}
       </GlobalContext.Provider>
     </>
   )
