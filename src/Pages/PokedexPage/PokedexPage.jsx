@@ -7,7 +7,7 @@ import { HeaderCards, TitleCard, ContainerCard, Container, Main } from '../../st
 export function Pokedex() {
 
     const context = useContext(GlobalContext)
-    const { pokemons } = context
+    const { pokedex } = context
 
     return (
         <Container>
@@ -18,8 +18,7 @@ export function Pokedex() {
                 </HeaderCards>
                 <ContainerCard>
                     {
-                        pokemons?.
-                            filter((pokemon) => pokemon.isPokedex).
+                        pokedex?.
                             map((pokemon, idx) =>
                                 <Card key={pokemon.name} pokemon={pokemon} idx={idx} />
                             )

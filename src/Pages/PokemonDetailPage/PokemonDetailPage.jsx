@@ -38,6 +38,7 @@ export function Details() {
             color={correctState(stats.stat.name).includes("Sp.")?"orange":"red"}></StatsBar>
         </Stats>)
     }
+    
     return (
         <Container>
             <Header />

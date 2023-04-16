@@ -27,7 +27,8 @@ export default function Card(props) {
         imageFrontPokemon: "",
         imageBackPokemon: "",
         stats: [],
-        moves: []
+        moves: [],
+        pathLastPage:""
     }
 
     const [detalhes, setDetalhes] = useState(detalhes_)
@@ -42,6 +43,11 @@ export default function Card(props) {
                 
                 // ler dados de cada pokemon
                 const getPokemon = await axios.get(pokemon.url)
+                let image_Pokemon = context.noImage
+
+                image_Pokemon = getPokemon.data.sprites.other["official-artwork"].front_default
+                ? getPokemon.data.sprites.other["official-artwork"].front_default
+                : image_Pokemon              
 
                 // // habilidades
                 const abiliti1 = getPokemon.data.types[0]?.type.name;
@@ -54,7 +60,7 @@ export default function Card(props) {
                 detalhes_ = {
                     id: getPokemon.data.id ,
                     name: getPokemon.data.name,
-                    image: getPokemon.data.sprites.other["official-artwork"].front_default,
+                    image: image_Pokemon,
                     type1: getPokemon.data.types[0]?.type.name,
                     type2: getPokemon.data.types[1]?.type.name,
                     type1Img: data1?.img,
@@ -65,7 +71,8 @@ export default function Card(props) {
                     imageFrontPokemon: getPokemon.data.sprites.front_default,
                     imageBackPokemon: getPokemon.data.sprites.back_default,
                     stats: getPokemon.data.stats,
-                    moves: getPokemon.data.moves.filter((m, index) => index <= 3)
+                    moves: getPokemon.data.moves.filter((m, index) => index <= 3),
+                    pathLastPage: location.pathname
                 }
                 setDetalhes(detalhes_)
 
@@ -136,18 +143,18 @@ export default function Card(props) {
                                 moves: detalhes.moves,
                                 colorBackGround: detalhes.colorBackGround,
                                 pokemon,
-                                pathName: location.pathName
+                                pathLastPage: location.pathname
 
                             })}>Detalhes</S.Detail>
                         {
                             location.pathname === '/' &&
                             <S.BtnCapture colorBackground={'#ffffff'} colorFont={'#0f0f0f'}
-                                onClick={() => context.handleStatusPokemon(pokemon, true)}>Capturar!</S.BtnCapture>
+                                onClick={() => context.capture(pokemon)}>Capturar!</S.BtnCapture>
                         }
                         {
                             location.pathname === '/pokedex' &&
                             <S.BtnCapture colorBackground={'#ff6262'} colorFont={'#ffffff'}
-                                onClick={() => context.handleStatusPokemon(pokemon, false)}>Excluir</S.BtnCapture>
+                                onClick={() => context.excluir(pokemon)}>Excluir</S.BtnCapture>
                         }
                     </S.CardDetail>
                 </S.Card>

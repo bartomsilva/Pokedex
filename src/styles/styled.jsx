@@ -85,9 +85,9 @@ export const SectionLeft = styled.section`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    width: 380px;
+    width: 390px;
     height: 370px;
-    padding: 10px 0;
+    padding: 10px 0 0 5px;
 
     @media(max-width:768px){
         height: fit-content;
@@ -101,13 +101,13 @@ export const ContainerImage = styled.div`
     flex-direction: column;
     gap: 15px;
     height: 350px;
+    margin-right: 10px;
   `
 export const BoxImage = styled.div`    
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 8px;   
-
     width: 130px;
     height: 150px;
     background-color: #fff;
@@ -118,11 +118,11 @@ export const BoxImage = styled.div`
 `
 
 export const BoxStats = styled.div`
-    width: 210px;
+    width: 245px;
     height: 350px;
     background-color: #fff;   
     border-radius: 12px ;
-    padding: 15px;
+    padding: 15px 10px;
   
 `
 export const TitleInfo = styled.h2`
@@ -137,7 +137,7 @@ export const BoxMoves = styled(BoxStats)`
     margin-top: 10px;
     width: 170px;
     height: 100%;
-    padding-top: 10px;
+    padding-top: 8px;
     z-index: 99999;
     overflow: hidden;
        
@@ -147,8 +147,8 @@ export const Stats = styled.div`
     min-height:fit-content;
     margin-top: 20px;
     display: grid;
-    grid-template-columns: 50px 30px 80px;
-    gap: 12px;
+    grid-template-columns: 50px 30px 70px;
+    gap: 5px;
     justify-content: flex-start;
 `
 export const Moves = styled.div`
@@ -156,13 +156,13 @@ export const Moves = styled.div`
     height: 100%; 
     display: flex ;
     flex-direction: column;
-    gap: 15px;
-    margin-top: 10px;    
+    gap: 12px;
+    margin-top: 8px;    
 `
 
 export const Move = styled.button`
 width: 110px;
-height: 35px;
+height: 30px;
 font-family: 'Montserrat';
 font-style: normal;
 font-weight: 400;
@@ -198,7 +198,7 @@ export const BoxIdentification = styled.div`
 `
 
 export const SectionRight = styled.section`
-    width:380px; 
+    width:370px; 
     height: 370px;
     display: flex;
     flex-direction: column;
@@ -225,7 +225,7 @@ export const DetailName = styled.p`
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
-    font-size: 38px;
+    font-size: 30px;
     color: #fff;
     margin-bottom: 10px;
     
@@ -241,8 +241,8 @@ export const ImgBackGround = styled.img`
 `
 export const ImgPokemon = styled.img`
     position: absolute;
-    top: -85px;
-    right: 10px;
+    top: -105px;
+    right: 20px;
     width: 160px;
     @media(max-width: 768px){
         position: static;

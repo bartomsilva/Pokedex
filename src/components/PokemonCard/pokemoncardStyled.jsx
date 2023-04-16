@@ -19,7 +19,7 @@ export const Card = styled.div`
 `;
 
 export const IdentificationPokemon = styled.div`
-  width: 100%;
+  width: 200px;
 `
 
 export const Id = styled.p`
@@ -38,7 +38,6 @@ export const ImgPokemonCard = styled.img`
   @media(max-width:480px){
     height: 170px;
     top: -50px;
-
   }
 
 `;
@@ -61,17 +60,17 @@ export const TitleCard = styled.p`
   font-family: "Inter";
   font-style: normal;
   font-weight: 700;
-  font-size: 32px;
+  font-size: 20px; //32px
   color: #fff;
   @media(max-width:480px){
-    font-size: 26px;
+    font-size: 18px;
   } 
   
 `;
 
 export const CardTypes = styled.div`
   position: absolute;
-  top: 80px;
+  top: 85px;
   display: flex;
   width: fit-content;
   gap: 8px;
@@ -94,8 +93,7 @@ export const ContainerType = styled.div`
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
-  
+  font-size: 14px;  
 `;
 
 export const CardDetail = styled.div`
@@ -109,12 +107,13 @@ export const Detail = styled.a`
   font-weight: 700;
   font-size: 16px;
   text-decoration: underline;
-  cursor: pointer;
   color: #fff;
   position: absolute;
   bottom: 29px;
   left: 25px;
+  cursor: pointer;
 `;
+
 export const BtnCapture = styled.button`
   width: 146px;
   height: 38px;
@@ -140,7 +139,6 @@ export const BtnCapture = styled.button`
     transition-duration: 200ms;
     color: ${({ colorBackground }) => colorBackground};
     background-color: ${({ colorFont }) => colorFont};
-
   }
 `;
 

@@ -10,51 +10,77 @@ export function Header() {
     const location = useLocation()
     const navigate = useNavigate()
     const context = useContext(GlobalContext)
- 
-    console.log("af",context?.infoPokemon?.pokemon?.pathName)
+
     return (
         <>
             {
                 location.pathname === "/" &&
                 <S.Header_>
-                    <S.Logo src={logo} alt="" />
-                    <S.BtnPokedex color={'#33a4f5'} onClick={() => gotoPokedex(navigate)}>Pokédex</S.BtnPokedex>
+                    <S.ContainerNav>
+                    </S.ContainerNav>
+                    <S.ContainerLogo>
+                        <S.Logo src={logo} alt="logo Pokémon" />
+                    </S.ContainerLogo>
+                    <S.ContainerButton>
+                        <S.BtnPokedex color={'#33a4f5'} onClick={() => gotoPokedex(navigate)}>Pokédex</S.BtnPokedex>
+                    </S.ContainerButton>
                 </S.Header_>
             }
             {
                 location.pathname === "/pokedex" &&
                 <S.Header_>
-                    <S.Logo src={logo} alt="" />
-                    <S.NavMenu>
-                        <S.NavLeftArrow src={leftArrow} alt="" />
-                        <S.NavBtnAllPokemons onClick={() => gotoHome(navigate)} href="#">Todos Pokémons</S.NavBtnAllPokemons>
-                    </S.NavMenu>
+                    <S.ContainerNav>
+                        <S.NavMenu>
+                            <S.NavLeftArrow src={leftArrow} alt="" />
+                            <S.NavBtnAllPokemons onClick={() => gotoHome(navigate)} href="#">Todos Pokémons</S.NavBtnAllPokemons>
+                        </S.NavMenu>
+                    </S.ContainerNav>
+                    <S.ContainerLogo>
+                        <S.Logo src={logo} alt="logo Pokémon" />
+                    </S.ContainerLogo>
+                    <S.ContainerButton>
+                    </S.ContainerButton>
                 </S.Header_>
             }
             {
                 location.pathname === "/details" &&
                 <S.Header_>
-                    <S.Logo src={logo} alt="" />
-                    <S.NavMenu>
+
+                    <S.ContainerNav>
                         <S.NavLeftArrow src={leftArrow} alt="" />
                         {
-                            context.infoPokemon.pokemon.pathName==='/' ?
-                                <S.NavBtnAllPokemons onClick={() => gotoHome(navigate)} href="#">Todos Pokémons</S.NavBtnAllPokemons>
+                            context.infoPokemon.pathLastPage === '/' ?
+                                <S.NavBtnAllPokemons onClick={() => gotoHome(navigate)} href="#">
+                                    Todos Pokémons
+                                </S.NavBtnAllPokemons>
                                 :
-                                <S.NavBtnAllPokemons onClick={() => gotoPokedex(navigate)} href="#">Pokédex</S.NavBtnAllPokemons>
+                                <S.NavBtnAllPokemons onClick={() => gotoPokedex(navigate)} href="#">
+                                    Pokédex
+                                </S.NavBtnAllPokemons>
                         }
-                    </S.NavMenu>
-                    {
-                        context.infoPokemon.pokemon.isPokedex &&
-                        <S.BtnPokedex color={"#ff6262"}
-                            onClick={() =>context.handleStatusPokemon(context.infoPokemon.pokemon, false)}
-                            >Excluir da Pokédex</S.BtnPokedex>
-                    }
-                    {
-                        !context.infoPokemon.pokemon.isPokedex &&
-                        <S.BtnPokedex color={"#33a4f5"}
-                            onClick={() => context.handleStatusPokemon(context.infoPokemon.pokemon, true)}
-                            >Capturar</S.BtnPokedex>                    }
+                    </S.ContainerNav>
+
+                    <S.ContainerLogo>
+                        <S.Logo src={logo} alt="logo Pokémon" />
+                    </S.ContainerLogo>
+                    
+                    <S.ContainerButton>
+                        {
+                            !context.noPokedex(context.infoPokemon.pokemon.name) &&
+                            <S.BtnPokedex color={"#ff6262"}
+                                onClick={() => context.excluir(context.infoPokemon.pokemon)}>
+                                Excluir da Pokédex
+                            </S.BtnPokedex>
+                        }
+                        {
+                            context.noPokedex(context.infoPokemon.pokemon.name) &&
+                            <S.BtnPokedex color={"#33a4f5"}
+                                onClick={() => context.capture(context.infoPokemon.pokemon)}>
+                                Capturar
+                            </S.BtnPokedex>
+                        }
+                    </S.ContainerButton>
+
                 </S.Header_>
             }
         </>

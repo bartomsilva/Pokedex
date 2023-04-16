@@ -3,6 +3,7 @@ import { GlobalContext } from "../../Global/GlobalStateContext"
 import { Header } from '../../Components/Header/Header'
 import Card from "../../Components/PokemonCard/PokemonCard"
 import { HeaderCards, TitleCard, ContainerCard, Container, Main } from '../../styles/styled'
+import { Footer } from "../../Components/Footer/Footer"
 
 export function Home() {
 
@@ -19,13 +20,13 @@ export function Home() {
                 <ContainerCard>
                     {
                         pokemons?.
-                            filter((pokemon) => !pokemon.isPokedex).
-                            map((pokemon, idx) =>
-                                <Card key={pokemon.name} pokemon={pokemon} idx={idx} />
+                        filter( pokemon => context.noPokedex(pokemon.name)).map( (pokemon,index) =>
+                                <Card key={pokemon.name} pokemon={pokemon} idx={index} />
                             )
                     }
                 </ContainerCard>
             </Main>
+            <Footer/>
         </Container>
     )
 

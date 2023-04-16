@@ -4,27 +4,7 @@ import axios from "axios";
 // impagem de fundo do card
 import ballCard from '/image/BallCard.svg'
 import pokeBallAnimate from '/image/pokeball.gif'
-import iPoison from '/image/Poison.svg'
-import iGrass from '/image/Grass.svg'
-import iFire from '/image/Fire.svg'
-import iFlying from '/image/Flying.svg'
-import iWater from '/image/Water.svg'
-import iBug from '/image/Bug.svg'
-import iNormal from '/image/Normal.svg'
-import iDark from '/image/Dark.svg'
-import iDragon from '/image/Dragon.svg'
-import iEletric from '/image/Eletric.svg'
-import iFairy from '/image/Fairy.svg'
-import iFighting from '/image/Fighting.svg'
-import iGhost from '/image/Ghost.svg'
-import iGround from '/image/Ground.svg'
-import iIce from '/image/Ice.svg'
-import iPsychic from '/image/Psychic.svg'
-import iRock from '/image/Rock.svg'
-import iSteel from '/image/Steel.svg'
-
-
-let onStart = true
+import noImage from '/image/no_image.png'
 
 export function GlobalState() {
 
@@ -40,27 +20,11 @@ export function GlobalState() {
   // pokemons livres
   const [pokemons, setPokemons] = useState([])
 
+  // pokemons capturados
+  const [pokedex, setPokedex] = useState([])
+
   // status da leitura da API
   const [isLoading, setIsLoading] = useState(true)
-
-  // traduzir
-  let detalhes_ = {
-    id: "",
-    name: "",
-    image: "",
-    type1: "",
-    type2: "",
-    type1Img: "",
-    type2Img: "",
-    type1Color: "",
-    type2Color: "",
-    colorBackGround: "",
-    imageFrontPokemon: "",
-    imageBackPokemon: "",
-    stats: [],
-    moves: []
-  }
-  const [detalhes, setDetalhes] = useState(detalhes_)
 
   // cor de fundo ofiial 
   const CardColorOficialBG =
@@ -75,6 +39,9 @@ export function GlobalState() {
       { name: 'gray', color: "#808080" },
       { name: 'white', color: "#dcdbdc" },
     ]
+
+  const [offset,setOffset] = useState(0)
+  
 
   function oficialColor(_color) {
     if (!_color) return ""
@@ -92,137 +59,129 @@ export function GlobalState() {
     },
     {
       type: 'grass',
-      img: iGrass,
+      img: '/image/Grass.svg',
       bgc: '#70B873',
       colorCard: '#739f92'
     },
     {
       type: 'fire',
-      img: iFire,
+      img: '/image/Fire.svg',
       bgc: '#F44900',
       colorCard: '#eaac7d'
     },
     {
       type: 'flying',
-      img: iFlying,
+      img: '/image/Flying.svg',
       bgc: '#6892B0',
       colorCard: '#3394A1'
     },
     {
       type: 'water',
-      img: iWater,
+      img: '/image/Water.svg',
       bgc: '#33A4F5',
       colorCard: '#71c3ff'
     },
     {
       type: 'bug',
-      img: iBug,
+      img: '/image/Bug.svg',
       bgc: '#316520',
       colorCard: '#76a966'
     },
     {
       type: 'normal',
-      img: iNormal,
+      img: '/image/Normal.svg',
       bgc: '#8A8A8A',
       colorCard: '#bf9763'
     },
     {
       type: 'dark',
-      img: iDark,
+      img: '/image/Dark.svg',
       bgc: '#5C5365',
       colorCard: '#3C5555'
     },
     {
       type: 'dragon',
-      img: iDragon,
+      img: '/image/Dragon.svg',
       bgc: '#0A6CBF',
       colorCard: '#0B1ABA'
     },
     {
-      type: 'eletric',
-      img: iEletric,
+      type: 'electric',
+      img: '/image/Electric.svg',
       bgc: '#F4D23B',
       colorCard: '#C1D131'
     },
     {
       type: 'fairy',
-      img: iFairy,
+      img: '/image/Fairy.svg',
       bgc: '#EC8FE6',
       colorCard: '#B18AE1'
     },
     {
       type: 'fighting',
-      img: iFighting,
+      img: '/image/Fighting.svg',
       bgc: '#CE4069',
       colorCard: '#AB4A69'
     },
     {
       type: 'ghost',
-      img: iGhost,
+      img: '/image/Ghost.svg',
       bgc: '#5269ac',
       colorCard: '#5a59aF'
     },
     {
       type: 'ground',
-      img: iGround,
+      img: '/image/Ground.svg',
       bgc: '#D97745',
       colorCard: '#D6663A'
     },
     {
       type: 'ice',
-      img: iIce,
+      img: '/image/Ice.svg',
       bgc: '#74CEC0',
       colorCard: '#74BCCA'
     },
     {
       type: 'psychic',
-      img: iPsychic,
+      img: '/image/Psychic.svg',
       bgc: '#F67176',
       colorCard: '#F55265'
     },
     {
-      type: 'rock',
-      img: iRock,
+      type: 'rock' ,
+      img: '/image/Rock.svg',
       bgc: '#C7B78B',
       colorCard: '#C6B32B'
     },
     {
       type: 'steel',
-      img: iSteel,
+      img: '/image/Steel.svg',
       bgc: '#BBBBBB',
       colorCard: '#B1B1C1'
     },
   ]
 
-  // função que adiciona ou remove o pokemon da pokedex
-  // através do status isPokedex ( true na pokédex / false livre )
-  function handleStatusPokemon(pokemon, status) {
-    const newListPokemons = pokemons.map(pokemonX => {
-      if (pokemonX.name === pokemon.name) {
-        pokemonX.isPokedex = status
-      }
-      return pokemonX
-    })
-    setPokemons(newListPokemons)
-    setAction(status ? "capture" : "remove")
+  //função de captura do pokemon
+  function capture(pokemon) {
+    const newPokedex = [...pokedex, pokemon]
+    setPokedex(newPokedex)
+    setAction("capture")
+    setModal(true)       
+  }
+
+  // função que tira o pokemon da pokédex
+  function excluir(pokemon) {
+    const newPokedex = pokedex.filter( pokedex => pokedex.name !== pokemon.name)
+    setPokedex(newPokedex) 
+    setAction("remove")
     setModal(true)
   }
 
   // Leitura dos dados da API
-  const loadData = async () => {
+  const loadData = async (url) => {
     setIsLoading(true)
     try {
-      // const newDataPokemons = []
-      const response = await axios.get('https://pokeapi.co/api/v2/pokemon/')
-      // add a chave isPokedex para controlar o status livre ou na pokédex
-      // response.data.results.forEach((element) => {
-      //   const newElement = {
-      //     ...element,
-      //     isPokedex: false
-      //   }
-      //   newDataPokemons.push(newElement)
-      // });
-      // setPokemons(newDataPokemons)
+      const response = await axios.get(url)
       setPokemons(response.data.results)
     }
     catch (error) {
@@ -232,74 +191,17 @@ export function GlobalState() {
   }
 
   useEffect(() => {
-    loadData()
+    loadData('https://pokeapi.co/api/v2/pokemon/')
   }, [])
 
-  function loadDetailPokemon(pokemon) {
-
-    detalhes_ = {
-      id: "",
-      name: "",
-      image: "",
-      type1: "",
-      type2: "",
-      type1Img: "",
-      type2Img: "",
-      type1Color: "",
-      type2Color: "",
-      colorBackGround: "",
-      imageFrontPokemon: "",
-      imageBackPokemon: "",
-      stats: [],
-      moves: []
+  function noPokedex(namePokemon){
+    const foundPokemon = pokedex.filter( pokemon => pokemon.name === namePokemon )
+    if (foundPokemon.length>0){ //indica que achou na podex e não pode ser mostrado na home
+      return false // não aparece na home
+    } else {
+      return true // aparece na home
     }
-
-      ; (async () => {
-        setIsLoading(true)
-        try {
-
-          setIsLoading(true)
-
-          // ler dados de cada pokemon
-          const getPokemon = await axios.get(pokemon.url)
-
-          // imagem Destaque
-          const image_ = getPokemon.data.sprites.other["official-artwork"].front_default;
-
-          // // habilidades
-          const abiliti1 = getPokemon.data.types[0]?.type.name;
-          const abiliti2 = getPokemon.data.types[1]?.type.name;
-
-          // objeto das habilidades ( imagem e cor do card)
-          const data1 = dataAbiliti.find((abiliti) => abiliti.type === abiliti1);
-          const data2 = dataAbiliti.find((abiliti) => abiliti.type === abiliti2);
-
-          detalhes_ = {
-            id: getPokemon.data.id,
-            name: getPokemon.data.name,
-            image: getPokemon.data.sprites.other["official-artwork"].front_default,
-            type1: getPokemon.data.types[0]?.type.name,
-            type2: getPokemon.data.types[1]?.type.name,
-            type1Img: data1?.img,
-            type2Img: data2?.img,
-            type1Color: data1?.bgc,
-            type2Color: data2?.bgc,
-            colorBackGround: data1?.colorCard,
-            imageFrontPokemon: getPokemon.data.sprites.front_default,
-            imageBackPokemon: getPokemon.data.sprites.back_default,
-            stats: getPokemon.data.stats,
-            moves: getPokemon.data.moves.filter((m, index) => index <= 3)
-          }
-          // setDetalhes(detalhes_)
-
-          setIsLoading(false)
-          return(detalhes_)
-
-        } catch (error) {
-          console.log(error)
-        }
-      })()
-    }
+  }
 
   // formatação do Id
   function formatId(id) {
@@ -317,7 +219,6 @@ export function GlobalState() {
     return {
       pokemons,
       setPokemons,
-      handleStatusPokemon,
       ballCard,
       pokeBallAnimate,
       dataAbiliti,
@@ -330,8 +231,15 @@ export function GlobalState() {
       action,
       infoPokemon,
       setInfoPokemon,
+      offset,
+      setOffset,
+      loadData,
+      pokedex, 
+      setPokedex,
+      capture,
+      excluir,
+      noPokedex,
+      noImage
       // oficialColor
-      detalhes,
-      loadDetailPokemon
     }
   }
