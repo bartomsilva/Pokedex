@@ -1,11 +1,11 @@
 import { useContext } from "react"
 import { GlobalContext } from "../../Global/GlobalStateContext"
 import { Header } from '../../Components/Header/Header'
-import Card from "../../Components/PokemonCard/PokemonCard"
+import { Card } from "../../Components/PokemonCard/PokemonCard"
 import { HeaderCards, TitleCard, ContainerCard, Container, Main } from '../../styles/styled'
 import { Footer } from "../../Components/Footer/Footer"
 
-export function Home() {
+export function PokemonListPage() {
 
     const context = useContext(GlobalContext)
     const { pokemons } = context

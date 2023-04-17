@@ -55,7 +55,9 @@ export const ContainerCard = styled.div`
     background-color: ${({ color }) => color};
     position: relative;
 
-
+`
+export const ImageWaitLoadingData = styled.img`
+    height: 200px;
 `
 // details
 

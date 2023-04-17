@@ -7,7 +7,7 @@ export const gotoPokedex=(navigate)=>{
     navigate('/pokedex')
 }
 
-export const gotoDetail=(navigate)=>{
-    navigate('/details')
+export const gotoDetail=(navigate,namePokemon)=>{
+    navigate('/details/'+namePokemon)
 }
 

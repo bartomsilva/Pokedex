@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react'
 import axios from "axios";
+import { BASE_URL } from '../Constants/Constants';
 
-// impagem de fundo do card
 import ballCard from '/image/BallCard.svg'
 import pokeBallAnimate from '/image/pokeball.gif'
 import noImage from '/image/no_image.png'
 
 export function GlobalState() {
 
-  //  todas informação para a pagina delalhes 
-  const [infoPokemon, setInfoPokemon] = useState([])
+  // informação sobre a última página acessada
+  // sobre qual pokpemon foi solicitado os detalhes
+  const [infoLastPage, setInfoLastPage] = useState([])
 
   // status do modal
   const [modal, setModal] = useState(false)
@@ -40,8 +41,8 @@ export function GlobalState() {
       { name: 'white', color: "#dcdbdc" },
     ]
 
-  const [offset,setOffset] = useState(0)
-  
+  const [offset, setOffset] = useState(0)
+
 
   function oficialColor(_color) {
     if (!_color) return ""
@@ -148,7 +149,7 @@ export function GlobalState() {
       colorCard: '#F55265'
     },
     {
-      type: 'rock' ,
+      type: 'rock',
       img: '/image/Rock.svg',
       bgc: '#C7B78B',
       colorCard: '#C6B32B'
@@ -162,17 +163,17 @@ export function GlobalState() {
   ]
 
   //função de captura do pokemon
-  function capture(pokemon) {
+  function addPokemonPokedex(pokemon) {
     const newPokedex = [...pokedex, pokemon]
     setPokedex(newPokedex)
     setAction("capture")
-    setModal(true)       
+    setModal(true)
   }
 
   // função que tira o pokemon da pokédex
-  function excluir(pokemon) {
-    const newPokedex = pokedex.filter( pokedex => pokedex.name !== pokemon.name)
-    setPokedex(newPokedex) 
+  function removePokemonPokedex(pokemon) {
+    const newPokedex = pokedex.filter(pokedex => pokedex.name !== pokemon.name)
+    setPokedex(newPokedex)
     setAction("remove")
     setModal(true)
   }
@@ -191,12 +192,12 @@ export function GlobalState() {
   }
 
   useEffect(() => {
-    loadData('https://pokeapi.co/api/v2/pokemon/')
+    loadData(BASE_URL)
   }, [])
 
-  function noPokedex(namePokemon){
-    const foundPokemon = pokedex.filter( pokemon => pokemon.name === namePokemon )
-    if (foundPokemon.length>0){ //indica que achou na podex e não pode ser mostrado na home
+  function noPokedex(namePokemon) {
+    const foundPokemon = pokedex.filter(pokemon => pokemon.name === namePokemon)
+    if (foundPokemon.length > 0) { //indica que achou na podex e não pode ser mostrado na home
       return false // não aparece na home
     } else {
       return true // aparece na home
@@ -205,41 +206,42 @@ export function GlobalState() {
 
   // formatação do Id
   function formatId(id) {
-      if (!id) return ""
-      return "#" + String(id).padStart(2, 0)
-    }
-
-    // função para deixar a primeira letra maiuscula
-    function firstLetterUpper(text) {
-      if (!text || text.length === 0) return "";
-      text = text.toLowerCase();
-      return text[0].toUpperCase() + text.substring(1);
-    }
-
-    return {
-      pokemons,
-      setPokemons,
-      ballCard,
-      pokeBallAnimate,
-      dataAbiliti,
-      setIsLoading,
-      isLoading,
-      firstLetterUpper,
-      formatId,
-      modal,
-      setModal,
-      action,
-      infoPokemon,
-      setInfoPokemon,
-      offset,
-      setOffset,
-      loadData,
-      pokedex, 
-      setPokedex,
-      capture,
-      excluir,
-      noPokedex,
-      noImage
-      // oficialColor
-    }
+    if (!id) return ""
+    return "#" + String(id).padStart(2, 0)
   }
+
+  // função para deixar a primeira letra maiuscula
+  function firstLetterUpper(text) {
+    if (!text || text.length === 0) return "";
+    text = text.toLowerCase();
+    return text[0].toUpperCase() + text.substring(1);
+  }
+
+
+  return {
+    pokemons,
+    setPokemons,
+    ballCard,
+    pokeBallAnimate,
+    dataAbiliti,
+    setIsLoading,
+    isLoading,
+    firstLetterUpper,
+    formatId,
+    modal,
+    setModal,
+    action,
+    infoLastPage,
+    setInfoLastPage,
+    offset,
+    setOffset,
+    loadData,
+    pokedex,
+    setPokedex,
+    addPokemonPokedex,
+    removePokemonPokedex,
+    noPokedex,
+    noImage,
+    // oficialColor
+  }
+}

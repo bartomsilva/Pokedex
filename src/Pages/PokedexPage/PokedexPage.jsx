@@ -1,10 +1,10 @@
 import { useContext } from "react"
 import { GlobalContext } from "../../Global/GlobalStateContext"
 import { Header } from '../../Components/Header/Header'
-import Card from "../../Components/PokemonCard/PokemonCard"
+import { Card } from "../../Components/PokemonCard/PokemonCard"
 import { HeaderCards, TitleCard, ContainerCard, Container, Main } from '../../styles/styled'
 
-export function Pokedex() {
+export function PokedexPage() {
 
     const context = useContext(GlobalContext)
     const { pokedex } = context

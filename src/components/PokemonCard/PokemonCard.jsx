@@ -6,7 +6,7 @@ import { GlobalContext } from "../../Global/GlobalStateContext"
 import { CardType } from "../Cardtype/CardType"
 import { gotoDetail } from "../../Router/Coordination"
 
-export default function Card(props) {
+export function Card(props) {
 
     const context = useContext(GlobalContext)
     const location = useLocation()
@@ -87,8 +87,11 @@ export default function Card(props) {
 
     function goDetail(props) {
         // armazena as informações necessárias para monstrar os detalhes
-        context.setInfoPokemon(props)
-        gotoDetail(navigate)
+       
+        //params
+        context.setInfoLastPage(props)
+        // vou precisar da pagina de origem da consulta dos detalhes
+        gotoDetail(navigate,props.pokemon.name)
     }
 
     return (
@@ -128,20 +131,6 @@ export default function Card(props) {
                     <S.CardDetail>
                         <S.Detail href="#" onClick={() => goDetail(
                             {
-                                id: detalhes.id,
-                                name: detalhes.name,
-                                image: detalhes.image,
-                                imgFront: detalhes.imageFrontPokemon,
-                                imgBack: detalhes.imageBackPokemon,
-                                type1: detalhes.type1,
-                                typeImg1: detalhes.type1Img,
-                                typeColor1: detalhes.type1Color,
-                                type2: detalhes.type2,
-                                typeImg2: detalhes.type2Img,
-                                typeColor2: detalhes.type2Color,
-                                stats: detalhes.stats,
-                                moves: detalhes.moves,
-                                colorBackGround: detalhes.colorBackGround,
                                 pokemon,
                                 pathLastPage: location.pathname
 
@@ -149,12 +138,12 @@ export default function Card(props) {
                         {
                             location.pathname === '/' &&
                             <S.BtnCapture colorBackground={'#ffffff'} colorFont={'#0f0f0f'}
-                                onClick={() => context.capture(pokemon)}>Capturar!</S.BtnCapture>
+                                onClick={() => context.addPokemonPokedex(pokemon)}>Capturar!</S.BtnCapture>
                         }
                         {
                             location.pathname === '/pokedex' &&
                             <S.BtnCapture colorBackground={'#ff6262'} colorFont={'#ffffff'}
-                                onClick={() => context.excluir(pokemon)}>Excluir</S.BtnCapture>
+                                onClick={() => context.removePokemonPokedex(pokemon)}>Excluir</S.BtnCapture>
                         }
                     </S.CardDetail>
                 </S.Card>

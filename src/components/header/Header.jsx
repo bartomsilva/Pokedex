@@ -26,6 +26,7 @@ export function Header() {
                     </S.ContainerButton>
                 </S.Header_>
             }
+
             {
                 location.pathname === "/pokedex" &&
                 <S.Header_>
@@ -42,14 +43,14 @@ export function Header() {
                     </S.ContainerButton>
                 </S.Header_>
             }
-            {
-                location.pathname === "/details" &&
-                <S.Header_>
 
+            {
+                location.pathname.includes("/details") &&                 
+                <S.Header_>   
                     <S.ContainerNav>
                         <S.NavLeftArrow src={leftArrow} alt="" />
                         {
-                            context.infoPokemon.pathLastPage === '/' ?
+                            context.infoLastPage.pathLastPage === '/' ?
                                 <S.NavBtnAllPokemons onClick={() => gotoHome(navigate)} href="#">
                                     Todos Pokémons
                                 </S.NavBtnAllPokemons>
@@ -63,26 +64,26 @@ export function Header() {
                     <S.ContainerLogo>
                         <S.Logo src={logo} alt="logo Pokémon" />
                     </S.ContainerLogo>
-                    
+
                     <S.ContainerButton>
                         {
-                            !context.noPokedex(context.infoPokemon.pokemon.name) &&
+                            !context.noPokedex(context.infoLastPage?.pokemon?.name) &&
                             <S.BtnPokedex color={"#ff6262"}
-                                onClick={() => context.excluir(context.infoPokemon.pokemon)}>
+                                onClick={() => context.removePokemonPokedex(context.infoLastPage?.pokemon)}>
                                 Excluir da Pokédex
                             </S.BtnPokedex>
-                        }
+                        }                        
                         {
-                            context.noPokedex(context.infoPokemon.pokemon.name) &&
+                            context.noPokedex(context.infoLastPage.pokemon?.name) &&
                             <S.BtnPokedex color={"#33a4f5"}
-                                onClick={() => context.capture(context.infoPokemon.pokemon)}>
+                                onClick={() => context.addPokemonPokedex(context.infoLastPage?.pokemon)}>
                                 Capturar
                             </S.BtnPokedex>
                         }
                     </S.ContainerButton>
-
                 </S.Header_>
             }
+
         </>
     )
 }
