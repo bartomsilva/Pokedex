@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
+import { pulse } from '../../Global/GlobalEffetsStyled'
 
 export const Card = styled.div`
   width: 420px;
@@ -50,6 +51,9 @@ export const ImgPokemonCard2 = styled.div`
   z-index: 100;
   img{ 
     height: 190px;
+    :hover{
+      animation: ${pulse} 600ms linear infinite;
+    }
   }
   @media(max-width:480px){
     height: 170px;

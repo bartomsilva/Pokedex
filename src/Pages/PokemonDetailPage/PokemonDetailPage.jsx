@@ -96,7 +96,7 @@ export function PokemonDetailPage() {
     }
 
     return (
-        <Container>
+        <Container >
             <Header />
             <Main>
                 <HeaderCards>
@@ -109,7 +109,7 @@ export function PokemonDetailPage() {
                 }
                 {
                     !context.isLoading &&
-                    <ContainerCard>
+                    <ContainerCard className="animate__animated animate__backInRight">
                         <DetailCard color={detailsPokemon?.colorBackGround}>
                             <SectionLeft>
                                 <ContainerImage>

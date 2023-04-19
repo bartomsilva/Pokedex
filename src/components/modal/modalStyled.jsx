@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { fadeIn } from '../../Global/GlobalEffetsStyled'
 
 export const ExternalModal = styled.div`
     position: fixed;
@@ -9,6 +10,7 @@ export const ExternalModal = styled.div`
     z-index: 9999998;
     background-color: rgba(0,0,0,0.6);
 `
+
 export const MainModal = styled.div`
     display: flex;
     flex-direction: column;
@@ -16,14 +18,15 @@ export const MainModal = styled.div`
     align-items: center;
     gap: 30px;
     pointer-events: all;
-
+    
+    animation: ${fadeIn} 400ms linear;
     width: 451px;
     height: 222px;
 
     position: fixed;
     left: 50%;
     top: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%); 
     z-index: 9999999;
 
     background-color: #FFFFFF;
@@ -38,5 +41,7 @@ export const MainModal = styled.div`
     p{
         font-size: 16px;
     }
-`
     
+      
+`
+

@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { pulse } from "../Global/GlobalEffetsStyled";
 
 export const ContainerTypes = styled.div`
   top: 80px;
@@ -53,8 +54,10 @@ export const ContainerCard = styled.div`
     gap: 90px 15px;
     min-width: 340px;
     background-color: ${({ color }) => color};
-    position: relative;
-
+    position: relative;   
+    @media(max-width: 768px){
+        padding-top: 0;
+    }
 `
 export const ImageWaitLoadingData = styled.img`
     height: 200px;
@@ -73,10 +76,11 @@ export const DetailCard = styled.div`
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-
+    
     @media(max-width: 768px){
-        width: 100vw;
+        width: 95vw;
         height: fit-content;
+        padding-bottom: 30px;
         position: static;
         display: flex;
         flex-direction: column-reverse;
@@ -92,6 +96,10 @@ export const SectionLeft = styled.section`
     padding: 10px 0 0 5px;
 
     @media(max-width:768px){
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         height: fit-content;
     }
     
@@ -104,6 +112,14 @@ export const ContainerImage = styled.div`
     gap: 15px;
     height: 350px;
     margin-right: 10px;
+
+    @media(max-width:768px){
+        flex-direction: row; 
+        justify-content: center;
+        align-items: center;
+        height: fit-content;
+    }
+
   `
 export const BoxImage = styled.div`    
     display: flex;
@@ -117,6 +133,11 @@ export const BoxImage = styled.div`
     img{
         width: 100%;
     }
+    @media(max-width:768px){
+        margin-bottom: 20px ;
+    }
+
+
 `
 
 export const BoxStats = styled.div`
@@ -248,5 +269,8 @@ export const ImgPokemon = styled.img`
     width: 160px;
     @media(max-width: 768px){
         position: static;
+    }
+    :hover{
+      animation: ${pulse} 600ms linear infinite;
     }
  `

@@ -27,6 +27,7 @@ export function Modal() {
     }
     return (
         <S.ExternalModal onClick={() => { context.setModal(false) }}>
+            {/* <S.MainModal className="animate__animated animate__fadeIn"> */}
             <S.MainModal>
                 {showModal()}
             </S.MainModal>
