@@ -11,15 +11,16 @@ const ContainerFooter = styled.footer`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 60px;
+    height: 40px;
     background-color: black;
     button{
         border: none;
         border-radius: 12px;
-        width: 50px;
-        height: 50px;
+        width: 30px;
+        height: 30px;
         cursor: pointer;
         background-repeat: no-repeat;
+        background-size: cover;
         :active{
             transform: scale(0.9);
         }
@@ -41,7 +42,12 @@ const ContainerButtons = styled.section`
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;    
+    gap: 10px;   
+    @media(max-width: 768px){
+        position: absolute;
+        left: 25px;
+
+    } 
 `
 const ContainerCopyRight = styled.section`
     position: absolute;

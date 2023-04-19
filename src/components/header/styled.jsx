@@ -26,6 +26,8 @@ export const ContainerNav = styled.div`
 
     @media(max-width:768px){
         order: 2;
+        position: absolute;
+        top: 90px;
     }
 `
 export const ContainerLogo = styled.div`
@@ -77,7 +79,10 @@ export const Logo = styled.img`
     @media(max-width:768px){
         width: 200px; 
         margin-bottom: 20px 0;
-        align-self: center;
+        /* align-self: center; */
+        position: absolute;
+        top: 10px;
+        left:10px;
     }
 
     @media(max-width:480px){
@@ -101,6 +106,9 @@ export const BtnPokedex = styled.button`
         width: 130px;
         height: 40px;   
         font-size: 90%;
+        position: absolute;
+        top: 30px;
+        right:10px;
     }
 
     @media(max-width:480px){
