@@ -5,6 +5,8 @@ import { useContext, useEffect, useState } from "react"
 import { GlobalContext } from "../../Global/GlobalStateContext"
 import { CardType } from "../Cardtype/CardType"
 import { gotoDetail } from "../../Router/Coordination"
+import { LazyLoadImage } from "react-lazy-load-image-component"
+import PlaceholderImage from "/image/no_image.png";
 
 export function Card(props) {
 
@@ -28,7 +30,7 @@ export function Card(props) {
         imageBackPokemon: "",
         stats: [],
         moves: [],
-        pathLastPage:""
+        pathLastPage: ""
     }
 
     const [detalhes, setDetalhes] = useState(detalhes_)
@@ -40,14 +42,14 @@ export function Card(props) {
             context.setIsLoading(true)
             try {
                 context.setIsLoading(true)
-                
+
                 // ler dados de cada pokemon
                 const getPokemon = await axios.get(pokemon.url)
                 let image_Pokemon = context.noImage
 
                 image_Pokemon = getPokemon.data.sprites.other["official-artwork"].front_default
-                ? getPokemon.data.sprites.other["official-artwork"].front_default
-                : image_Pokemon              
+                    ? getPokemon.data.sprites.other["official-artwork"].front_default
+                    : image_Pokemon
 
                 // // habilidades
                 const abiliti1 = getPokemon.data.types[0]?.type.name;
@@ -58,7 +60,7 @@ export function Card(props) {
                 const data2 = context.dataAbiliti.find((abiliti) => abiliti.type === abiliti2);
 
                 detalhes_ = {
-                    id: getPokemon.data.id ,
+                    id: getPokemon.data.id,
                     name: getPokemon.data.name,
                     image: image_Pokemon,
                     type1: getPokemon.data.types[0]?.type.name,
@@ -87,11 +89,11 @@ export function Card(props) {
 
     function goDetail(props) {
         // armazena as informações necessárias para monstrar os detalhes
-       
+
         //params
         context.setInfoLastPage(props)
         // vou precisar da pagina de origem da consulta dos detalhes
-        gotoDetail(navigate,props.pokemon.name)
+        gotoDetail(navigate, props.pokemon.name)
     }
 
     return (
@@ -107,7 +109,15 @@ export function Card(props) {
                         <S.TitleCard>{context.firstLetterUpper(detalhes.name)}</S.TitleCard>
                     </S.IdentificationPokemon>
 
-                    <S.ImgPokemonCard src={detalhes.image} />
+                    {/* <S.ImgPokemonCard src={detalhes.image} /> */}
+
+                    <S.ImgPokemonCard2>
+                        <LazyLoadImage src={detalhes.image}                            
+                            effect="blur"
+                        />
+                    </S.ImgPokemonCard2>
+
+
                     <S.ImgShadowCard src={context.ballCard} alt="image background card" />
                     <S.CardTypes>
                         {detalhes.type1 &&
@@ -125,7 +135,7 @@ export function Card(props) {
                                 bgc={detalhes.type2Color}
                                 image={detalhes.type2Img}
                                 imageHeight={'18px'}
-                                text={detalhes.type2} />                        }
+                                text={detalhes.type2} />}
                     </S.CardTypes>
 
                     <S.CardDetail>

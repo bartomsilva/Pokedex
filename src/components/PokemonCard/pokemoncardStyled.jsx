@@ -42,6 +42,22 @@ export const ImgPokemonCard = styled.img`
 
 `;
 
+export const ImgPokemonCard2 = styled.div`
+  position: absolute;
+  height: 190px;
+  top: -60px;
+  right: 5px;
+  z-index: 100;
+  img{ 
+    height: 190px;
+  }
+  @media(max-width:480px){
+    height: 170px;
+    top: -50px;
+  }
+
+`;
+
 export const ImgShadowCard = styled.img`
   position: absolute;
   width: 220px;
