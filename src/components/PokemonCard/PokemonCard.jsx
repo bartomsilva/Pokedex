@@ -6,12 +6,18 @@ import { GlobalContext } from "../../Global/GlobalStateContext"
 import { CardType } from "../Cardtype/CardType"
 import { gotoDetail } from "../../Router/Coordination"
 import { LazyLoadImage } from "react-lazy-load-image-component"
-import PlaceholderImage from "/image/no_image.png";
+// import PlaceholderImage from "/image/no_image.png";
+import { useSpeechSynthesis } from 'react-speech-kit';
 
 export function Card(props) {
+    const { speak, voices } = useSpeechSynthesis();
+    const all = useSpeechSynthesis();
+    const textSpeak= "Olá!,"+
+    "para saber mais sobre este pokémon, clique em detalhes!"
 
     const context = useContext(GlobalContext)
     const location = useLocation()
+
 
     const { pokemon } = props
 
@@ -109,10 +115,8 @@ export function Card(props) {
                         <S.TitleCard>{context.firstLetterUpper(detalhes.name)}</S.TitleCard>
                     </S.IdentificationPokemon>
 
-                    {/* <S.ImgPokemonCard src={detalhes.image} /> */}
-
-                    <S.ImgPokemonCard2>
-                        <LazyLoadImage src={detalhes.image}                            
+                    <S.ImgPokemonCard2>                    
+                        <LazyLoadImage onClick={()=>speak({ text: textSpeak, voice:voices[0]})} src={detalhes.image}                            
                             effect="blur"
                         />
                     </S.ImgPokemonCard2>

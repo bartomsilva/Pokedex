@@ -272,5 +272,6 @@ export const ImgPokemon = styled.img`
     }
     :hover{
       animation: ${pulse} 600ms linear infinite;
+      cursor: pointer;
     }
  `

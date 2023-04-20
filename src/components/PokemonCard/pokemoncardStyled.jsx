@@ -52,6 +52,7 @@ export const ImgPokemonCard2 = styled.div`
   img{ 
     height: 190px;
     :hover{
+      cursor: pointer;
       animation: ${pulse} 600ms linear infinite;
     }
   }

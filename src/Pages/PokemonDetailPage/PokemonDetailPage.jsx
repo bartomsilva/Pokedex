@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { useSpeechSynthesis } from 'react-speech-kit';
 import { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { GlobalContext } from "../../Global/GlobalStateContext"
@@ -17,6 +18,8 @@ import { CardType } from '../../Components/Cardtype/CardType'
 
 export function PokemonDetailPage() {
 
+    let textSpeak = ""
+    const { speak, voices } = useSpeechSynthesis();
     const [detailsPokemon, setDetailsPokemon] = useState()
 
     const context = useContext(GlobalContext)
@@ -73,7 +76,7 @@ export function PokemonDetailPage() {
 
 
     let statsTotal = 0
-    
+
 
     function correctState(name) {
         if (name === "special-attack") {
@@ -95,82 +98,93 @@ export function PokemonDetailPage() {
         </Stats>)
     }
 
-    return (
-        <Container >
-            <Header />
-            <Main>
-                <HeaderCards>
-                    <TitleCard>Detalhes</TitleCard>
-                </HeaderCards>
-                {context.isLoading &&
-                    <ContainerCard>
-                        <ImageWaitLoadingData src="https://i.gifer.com/5IPv.gif" alt="" />
-                    </ContainerCard>
-                }
-                {
-                    !context.isLoading &&
-                    <ContainerCard className="animate__animated animate__backInRight">
-                        <DetailCard color={detailsPokemon?.colorBackGround}>
-                            <SectionLeft>
-                                <ContainerImage>
-                                    <BoxImage>
-                                        <img src={detailsPokemon?.imageFrontPokemon} alt="" />
-                                    </BoxImage>
-                                    <BoxImage>
-                                        <img src={detailsPokemon?.imageBackPokemon} alt="" />
-                                    </BoxImage>
-                                </ContainerImage>
-                                <BoxStats>
-                                    <TitleInfo>Base stats</TitleInfo>
-                                    <>
+    if (detailsPokemon?.type2) {
+        textSpeak = `Oi! meu nome é ${detailsPokemon?.name}, sou um pokémon
+    do tipo ${detailsPokemon?.type1} e ${detailsPokemon?.type2},`
+    } else {
+        textSpeak = `Oi! meu nome é ${detailsPokemon?.name}, sou um pokémon
+        do tipo ${detailsPokemon?.type1},`
+    }
+
+    textSpeak += ', algumas informações sobre mim, você pode ver neste card, muito obrigado pela sua visita!'
+
+        return (
+            <Container >
+                <Header />
+                <Main>
+                    <HeaderCards>
+                        <TitleCard>Detalhes</TitleCard>
+                    </HeaderCards>
+                    {context.isLoading &&
+                        <ContainerCard>
+                            <ImageWaitLoadingData src="https://i.gifer.com/5IPv.gif" alt="" />
+                        </ContainerCard>
+                    }
+
+                    {
+                        !context.isLoading &&
+                        <ContainerCard className="animate__animated animate__backInRight">
+                            <DetailCard color={detailsPokemon?.colorBackGround}>
+                                <SectionLeft>
+                                    <ContainerImage>
+                                        <BoxImage>
+                                            <img src={detailsPokemon?.imageFrontPokemon} alt="" />
+                                        </BoxImage>
+                                        <BoxImage>
+                                            <img src={detailsPokemon?.imageBackPokemon} alt="" />
+                                        </BoxImage>
+                                    </ContainerImage>
+                                    <BoxStats>
+                                        <TitleInfo>Base stats</TitleInfo>
+                                        <>
+                                            {
+                                                detailsPokemon?.stats.map((stats, index) =>
+                                                    renderStats(stats, index))
+                                            }
+                                        </>
+                                        <Stats>
+                                            <StatsName>Total:</StatsName>
+                                            <StatsVal bold={true}>{statsTotal}</StatsVal>
+                                        </Stats>
+                                    </BoxStats>
+                                </SectionLeft>
+                                <SectionRight>
+                                    <DetailId>{context.formatId(detailsPokemon?.id)}</DetailId>
+                                    <DetailName>{context.firstLetterUpper(detailsPokemon?.name)}</DetailName>
+                                    <ImgBackGround src={context.ballCard} alt="" />
+                                    <ImgPokemon onClick={() => speak({ text: textSpeak, voice: voices[16] })} src={detailsPokemon?.image} alt="" />
+                                    <ContainerTypes>
+                                        <CardType
+                                            heightCard={'31px'}
+                                            bgc={detailsPokemon?.type1Color}
+                                            image={detailsPokemon?.type1Img}
+                                            imageHeight={'18px'}
+                                            text={detailsPokemon?.type1} />
                                         {
-                                            detailsPokemon?.stats.map((stats, index) =>
-                                                renderStats(stats, index))
+                                            detailsPokemon?.type2 ?
+                                                <CardType
+                                                    height={'31px'}
+                                                    bgc={detailsPokemon?.type2Color}
+                                                    image={detailsPokemon?.type2Img}
+                                                    imageHeight={'18px'}
+                                                    text={detailsPokemon?.type2} /> : ""
                                         }
-                                    </>
-                                    <Stats>
-                                        <StatsName>Total:</StatsName>
-                                        <StatsVal bold={true}>{statsTotal}</StatsVal>
-                                    </Stats>
-                                </BoxStats>
-                            </SectionLeft>
-                            <SectionRight>
-                                <DetailId>{context.formatId(detailsPokemon?.id)}</DetailId>
-                                <DetailName>{context.firstLetterUpper(detailsPokemon?.name)}</DetailName>
-                                <ImgBackGround src={context.ballCard} alt="" />
-                                <ImgPokemon src={detailsPokemon?.image} alt="" />
-                                <ContainerTypes>
-                                    <CardType
-                                        heightCard={'31px'}
-                                        bgc={detailsPokemon?.type1Color}
-                                        image={detailsPokemon?.type1Img}
-                                        imageHeight={'18px'}
-                                        text={detailsPokemon?.type1} />
-                                    {
-                                        detailsPokemon?.type2 ?
-                                            <CardType
-                                                height={'31px'}
-                                                bgc={detailsPokemon?.type2Color}
-                                                image={detailsPokemon?.type2Img}
-                                                imageHeight={'18px'}
-                                                text={detailsPokemon?.type2} /> : ""
-                                    }
-                                </ContainerTypes>
-                                <BoxMoves>
-                                    <TitleInfo>Moves</TitleInfo>
-                                    <Moves>
-                                        {
-                                            detailsPokemon?.moves.map((moves, index) =>
-                                                <Move key={index}>{moves.move.name}</Move>
-                                            )
-                                        }
-                                    </Moves>
-                                </BoxMoves>
-                            </SectionRight>
-                        </DetailCard>
-                    </ContainerCard>
-                }
-            </Main>
-        </Container>
-    )
-}
+                                    </ContainerTypes>
+                                    <BoxMoves>
+                                        <TitleInfo>Moves</TitleInfo>
+                                        <Moves>
+                                            {
+                                                detailsPokemon?.moves.map((moves, index) =>
+                                                    <Move key={index}>{moves.move.name}</Move>
+                                                )
+                                            }
+                                        </Moves>
+                                    </BoxMoves>
+                                </SectionRight>
+                            </DetailCard>
+                        </ContainerCard>
+                    }
+                </Main>
+            </Container>
+        )
+    }
