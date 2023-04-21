@@ -106,7 +106,7 @@ export function PokemonDetailPage() {
         do tipo ${detailsPokemon?.type1},`
     }
 
-    textSpeak += ', algumas informações sobre mim, você pode ver neste card, muito obrigado pela sua visita!'
+    textSpeak += ', algumas informações sobre mim, você pode ver neste card!, muito obrigado pela sua visita!'
 
         return (
             <Container >
@@ -152,7 +152,8 @@ export function PokemonDetailPage() {
                                     <DetailId>{context.formatId(detailsPokemon?.id)}</DetailId>
                                     <DetailName>{context.firstLetterUpper(detailsPokemon?.name)}</DetailName>
                                     <ImgBackGround src={context.ballCard} alt="" />
-                                    <ImgPokemon onClick={() => speak({ text: textSpeak, voice: voices[16] })} src={detailsPokemon?.image} alt="" />
+                                    {/* <ImgPokemon onClick={() => speak({ text: textSpeak, voice: voices[16] })} src={detailsPokemon?.image} alt="" /> */}
+                                    <ImgPokemon src={detailsPokemon?.image} alt="" />
                                     <ContainerTypes>
                                         <CardType
                                             heightCard={'31px'}

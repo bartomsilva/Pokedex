@@ -19,6 +19,9 @@ export function PokedexPage() {
                 <ContainerCard>
                     {
                         pokedex?.
+                            sort((p1, p2) => {
+                                return (p1.name > p2.name ? 1 : -1)
+                            }).
                             map((pokemon, idx) =>
                                 <Card key={pokemon.name} pokemon={pokemon} idx={idx} />
                             )
