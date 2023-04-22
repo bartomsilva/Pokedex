@@ -204,10 +204,6 @@ export function GlobalState() {
     getPokemonsInPokedex !== null && setPokedex(JSON.parse(getPokemonsInPokedex))    
   }, [])
 
-
-
-  
-
   function noPokedex(namePokemon) {
     const foundPokemon = pokedex.filter(pokemon => pokemon.name === namePokemon)
     if (foundPokemon.length > 0) { //indica que achou na podex e não pode ser mostrado na home
