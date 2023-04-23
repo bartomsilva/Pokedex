@@ -168,7 +168,6 @@ export function GlobalState() {
     setPokedex(newPokedex)
     setAction("capture")
     setModal(true)
-    savePokedex(newPokedex)
   }
 
   // função que tira o pokemon da pokédex
@@ -177,14 +176,9 @@ export function GlobalState() {
     setPokedex(newPokedex)
     setAction("remove")
     setModal(true)
-    savePokedex(newPokedex)
   }
-
   
-  function savePokedex(newPokedex){
-    localStorage.setItem("pokedex",JSON.stringify(newPokedex))
-  }
-
+  
   // Leitura dos dados da API
   const loadData = async (url) => {
     setIsLoading(true)
@@ -200,8 +194,6 @@ export function GlobalState() {
 
   useEffect(() => {
     loadData(BASE_URL)
-    const getPokemonsInPokedex = localStorage.getItem("pokedex")
-    getPokemonsInPokedex !== null && setPokedex(JSON.parse(getPokemonsInPokedex))    
   }, [])
 
   function noPokedex(namePokemon) {
