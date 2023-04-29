@@ -1,9 +1,8 @@
 import { useContext } from "react"
 import { GlobalContext } from "../../Global/GlobalStateContext"
-import { Header } from '../../Components/Header/Header'
 import { Card } from "../../Components/PokemonCard/PokemonCard"
 import { HeaderCards, TitleCard, ContainerCard, Container, Main } from '../../styles/styled'
-import { Footer } from "../../Components/Footer/Footer"
+import { Footer } from '../../Components/Footer/Footer'
 
 export function PokemonListPage() {
 
@@ -11,8 +10,7 @@ export function PokemonListPage() {
     const { pokemons } = context
 
     return (
-        <Container>
-            <Header />
+        <Container>            
             <Main>
                 <HeaderCards>
                     <TitleCard>Todos Pokémons</TitleCard>
@@ -26,7 +24,7 @@ export function PokemonListPage() {
                     }
                 </ContainerCard>
             </Main>
-            <Footer/>
+            <Footer/> 
         </Container>
     )
 

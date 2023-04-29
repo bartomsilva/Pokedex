@@ -6,7 +6,7 @@ export const Header_ = styled.header`
     gap: 5px;
     padding: 0 25px;
     width: 100%;
-    height: 110px;
+    height: 100px;
     background-color: #fff;
 
     @media(max-width:768px){

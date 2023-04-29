@@ -177,8 +177,8 @@ export function GlobalState() {
     setAction("remove")
     setModal(true)
   }
-  
-  
+
+
   // Leitura dos dados da API
   const loadData = async (url) => {
     setIsLoading(true)
@@ -218,6 +218,52 @@ export function GlobalState() {
     return text[0].toUpperCase() + text.substring(1);
   }
 
+  async function getDetailPokemon(url) {
+
+    setIsLoading(true)
+    try {
+      // ler dados de cada pokemon
+      const getPokemon = await axios.get(url)
+      let image_Pokemon = noImage
+
+      image_Pokemon = getPokemon.data.sprites.other["official-artwork"].front_default
+        ? getPokemon.data.sprites.other["official-artwork"].front_default
+        : image_Pokemon
+
+      // // habilidades
+      const abiliti1 = getPokemon.data.types[0]?.type.name;
+      const abiliti2 = getPokemon.data.types[1]?.type.name;
+
+      // objeto das habilidades ( imagem e cor do card)
+      const data1 = dataAbiliti.find((abiliti) => abiliti.type === abiliti1);
+      const data2 = dataAbiliti.find((abiliti) => abiliti.type === abiliti2);
+
+      const detalhes_ = {
+        id: getPokemon.data.id,
+        name: getPokemon.data.name,
+        image: image_Pokemon,
+        type1: getPokemon.data.types[0]?.type.name,
+        type2: getPokemon.data.types[1]?.type.name,
+        type1Img: data1?.img,
+        type2Img: data2?.img,
+        type1Color: data1?.bgc,
+        type2Color: data2?.bgc,
+        colorBackGround: data1?.colorCard,
+        imageFrontPokemon: getPokemon.data.sprites.front_default,
+        imageBackPokemon: getPokemon.data.sprites.back_default,
+        stats: getPokemon.data.stats,
+        moves: getPokemon.data.moves.filter((m, index) => index <= 3),
+        pathLastPage: location.pathname
+      }
+      setIsLoading(false)
+      return(detalhes_)
+
+    } catch (error) {
+      console.log(error)
+      setIsLoading(false)
+    }
+  }
+
   return {
     pokemons,
     setPokemons,
@@ -242,6 +288,7 @@ export function GlobalState() {
     removePokemonPokedex,
     noPokedex,
     noImage,
+    getDetailPokemon
     // oficialColor
   }
 }

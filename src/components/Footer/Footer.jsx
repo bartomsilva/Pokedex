@@ -1,111 +1,58 @@
 import { useContext } from "react"
 import { GlobalContext } from "../../Global/GlobalStateContext"
-import styled from 'styled-components'
-
-const ContainerFooter = styled.footer`
-    position: fixed;
-    z-index: 999999;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 40px;
-    background-color: black;
-    button{
-        border: none;
-        border-radius: 12px;
-        width: 30px;
-        height: 30px;
-        cursor: pointer;
-        background-repeat: no-repeat;
-        background-size: cover;
-        :active{
-            transform: scale(0.9);
-        }
-    }
-`
-const ButtonFirstPage = styled.button`
-    background-image: url('/icon/first_page.svg');
-`
-const ButtonPrevPage = styled.button`
-    background-image: url('/icon/prev_page.svg');
-`
-const ButtonNextPage = styled.button`
-    background-image: url('/icon/next_page.svg');
-`
-const ButtonLastPage = styled.button`
-    background-image: url('/icon/last_page.svg');
-`
-const ContainerButtons = styled.section`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;   
-    @media(max-width: 768px){
-        position: absolute;
-        left: 25px;
-
-    } 
-`
-const ContainerCopyRight = styled.section`
-    position: absolute;
-    bottom: 50%;
-    right: 25px;
-    transform: translateY(50%);
-    color:#fff;
-`
+import { useLocation } from 'react-router-dom'
+import * as S from './FooterStyled'
 
 
 export function Footer() {
 
     const context = useContext(GlobalContext)
+    const location = useLocation()
 
     let url = "https://pokeapi.co/api/v2/pokemon/?offset=xx&limit=20"
-
 
     function nextListPokemons(pageDirection) {
         const lastPage = (64 * 20)
         const xoffset = context.offset
-        let xurl = ""
+        let newUrl = ""
         switch (pageDirection) {
             case "next":
                 if (xoffset + 20 <= lastPage) {
                     context.setOffset(prevState => prevState + 20)
-                    xurl = url.replace("offset=xx", "offset=" + (xoffset + 20))
+                    newUrl = url.replace("offset=xx", "offset=" + (xoffset + 20))
                 }
                 break
             case "prev":
                 if (xoffset - 20 >= 0) {
                     context.setOffset(prevState => prevState - 20)
-                    xurl = url.replace("offset=xx", "offset=" +(xoffset- 20))
+                    newUrl = url.replace("offset=xx", "offset=" + (xoffset - 20))
                 }
                 break
             case "first":
                 context.setOffset(0)
-                xurl = url.replace("offset=xx", "offset=0")
+                newUrl = url.replace("offset=xx", "offset=0")
                 break
             case "last":
                 context.setOffset(lastPage)
-                xurl = url.replace("offset=xx", "offset=" + lastPage)
+                newUrl = url.replace("offset=xx", "offset=" + lastPage)
                 break
         }
-        xurl && context.loadData(xurl)
+        newUrl && context.loadData(newUrl)
     }
 
     return (
-        <ContainerFooter>
-            <ContainerButtons>
-                <ButtonFirstPage onClick={() => nextListPokemons("first")}></ButtonFirstPage>
-                <ButtonPrevPage onClick={() => nextListPokemons("prev")} ></ButtonPrevPage>
-                <ButtonNextPage onClick={() => nextListPokemons("next")} ></ButtonNextPage>
-                <ButtonLastPage onClick={() => nextListPokemons("last")} ></ButtonLastPage>
-            </ContainerButtons>
-            <ContainerCopyRight>
-                <p>@by: Bart Silva</p>
-            </ContainerCopyRight>
 
-        </ContainerFooter>
+        location.pathname === "/" && (
+            <S.ContainerFooter>
+                <S.ContainerButtons>
+                    <S.ButtonFirstPage onClick={() => nextListPokemons("first")}></S.ButtonFirstPage>
+                    <S.ButtonPrevPage onClick={() => nextListPokemons("prev")} ></S.ButtonPrevPage>
+                    <S.ButtonNextPage onClick={() => nextListPokemons("next")} ></S.ButtonNextPage>
+                    <S.ButtonLastPage onClick={() => nextListPokemons("last")} ></S.ButtonLastPage>
+                </S.ContainerButtons>
+                <S.ContainerCopyRight>
+                    <p>@by: Bart Silva</p>
+                </S.ContainerCopyRight>
+            </S.ContainerFooter>)
     )
 }

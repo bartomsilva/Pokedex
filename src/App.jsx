@@ -12,7 +12,7 @@ function App() {
     <>
       <GlobalStyled />
       <GlobalContext.Provider value={context}>
-        <Router />
+        <Router/>
         {context.modal && <Modal action={context.action} />}
       </GlobalContext.Provider>
     </>
