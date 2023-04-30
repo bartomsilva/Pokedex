@@ -35,7 +35,7 @@ export function PokemonDetailPage() {
 
     let statsTotal = 0
 
-    function correctState(name) {
+    function correctNameState(name) {
         if (name === "special-attack") {
             return "Sp. Atk"
         }
@@ -49,10 +49,10 @@ export function PokemonDetailPage() {
         statsTotal += stats.base_stat
         return (<section key={index}>
             <Stats>
-                <StatsName >{correctState(stats.stat.name)}</StatsName>
+                <StatsName >{correctNameState(stats.stat.name)}</StatsName>
                 <StatsVal>{stats.base_stat}</StatsVal>
                 <StatsBar w={stats.base_stat}
-                    color={correctState(stats.stat.name).includes("Sp.") ? "orange" : "red"}></StatsBar>
+                    color={correctNameState(stats.stat.name).includes("Sp.") ? "orange" : "red"}></StatsBar>
             </Stats>
         </section>)
     }
@@ -60,7 +60,6 @@ export function PokemonDetailPage() {
     return (
         <Container >
             <Main>
-                {/* <ImageBackDetail src={'/image/ballBackDetail.svg'}></ImageBackDetail> */}
                 <HeaderCards>
                     <TitleCard>Detalhes</TitleCard>
                 </HeaderCards>
@@ -99,9 +98,8 @@ export function PokemonDetailPage() {
                             </SectionLeft>
                             <SectionRight>
                                 <DetailId>{context.formatId(detailsPokemon?.id)}</DetailId>
-                                <DetailName>{context.firstLetterUpper(detailsPokemon?.name)}</DetailName>
+                                <DetailName>{detailsPokemon?.name}</DetailName>
                                 <ImgBackGroundCardDetail src={context.ballCard} alt="" />
-                                {/* <ImgPokemon onClick={() => speak({ text: textSpeak, voice: voices[16] })} src={detailsPokemon?.image} alt="" /> */}
                                 <ImgPokemonDetail src={detailsPokemon?.image} alt="" />
                                 <ContainerTypes>
                                     <CardType

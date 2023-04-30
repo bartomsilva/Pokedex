@@ -81,8 +81,11 @@ export const TitleCard = styled.p`
   font-family: "Inter";
   font-style: normal;
   font-weight: 700;
-  font-size: 20px; //32px
+  font-size: 20px; 
   color: #fff;
+  ::first-letter{
+    text-transform: uppercase;
+  }
   @media(max-width:480px){
     font-size: 18px;
   } 

@@ -100,6 +100,7 @@ export const BtnPokedex = styled.button`
     color: #fff;
     font-size: 16px;
     font-weight: normal;
+    padding: 0 5px;
     cursor: pointer;
 
     @media(max-width:768px){

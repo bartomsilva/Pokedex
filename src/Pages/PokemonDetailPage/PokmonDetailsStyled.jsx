@@ -25,12 +25,13 @@ export const DetailCard = styled.div`
     align-items: center;
     
     @media(max-width: 768px){
-        width: 95vw;
+        width: 100vw;
         height: fit-content;
         padding-bottom: 30px;
-        position: static;
         display: flex;
         flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
     }
 `
 
@@ -44,13 +45,13 @@ export const SectionLeft = styled.section`
     justify-content: space-evenly;
 
     @media(max-width:768px){
-        width: 100%;
+        width: fit-content;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         height: fit-content;
-        padding: 10px;
+        padding: 10px 0;
      }   
 `
 
@@ -61,7 +62,6 @@ export const SectionRight = styled.section`
     display: flex;
     flex-direction: column;
     padding: 10px;
-
         
     @media(max-width: 768px){    
         width:370px; 
@@ -113,7 +113,6 @@ export const BoxImage = styled.div`
         margin-bottom: 20px ;
     }
 
-
 `
 export const BoxStats = styled.div`
     width: 265px;
@@ -143,6 +142,7 @@ export const StatsName = styled.div`
     text-align: right;
     font-size: 14px;
 `;
+
 
 export const StatsVal = styled.div`
     height: 8px;
@@ -217,6 +217,9 @@ export const DetailName = styled.p`
     font-size: 30px;
     color: #fff;
     margin-bottom: 10px;
+    ::first-letter{
+        text-transform: uppercase;
+    }
 `;
 
 export const ImgBackGroundCardDetail = styled.img`

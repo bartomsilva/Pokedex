@@ -45,8 +45,8 @@ export function Header() {
             }
 
             {
-                location.pathname.includes("/details") &&                 
-                <S.Header_>   
+                location.pathname.includes("/details") &&
+                <S.Header_>
                     <S.ContainerNav>
                         <S.NavLeftArrow src={leftArrow} alt="" />
                         {
@@ -72,7 +72,7 @@ export function Header() {
                                 onClick={() => context.removePokemonPokedex(context.infoLastPage?.pokemon)}>
                                 Excluir da Pokédex
                             </S.BtnPokedex>
-                        }                        
+                        }
                         {
                             context.noPokedex(context.infoLastPage.pokemon?.name) &&
                             <S.BtnPokedex color={"#33a4f5"}

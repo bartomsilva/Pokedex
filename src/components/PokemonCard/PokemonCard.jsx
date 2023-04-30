@@ -44,53 +44,7 @@ export function Card(props) {
     const navigate = useNavigate()
 
     useEffect(() => {
-        // ; (async () => {
-        //     context.setIsLoading(true)
-        //     try {
-        //         context.setIsLoading(true)
-
-        //         // ler dados de cada pokemon
-        //         const getPokemon = await axios.get(pokemon.url)
-        //         let image_Pokemon = context.noImage
-
-        //         image_Pokemon = getPokemon.data.sprites.other["official-artwork"].front_default
-        //             ? getPokemon.data.sprites.other["official-artwork"].front_default
-        //             : image_Pokemon
-
-        //         // // habilidades
-        //         const abiliti1 = getPokemon.data.types[0]?.type.name;
-        //         const abiliti2 = getPokemon.data.types[1]?.type.name;
-
-        //         // objeto das habilidades ( imagem e cor do card)
-        //         const data1 = context.dataAbiliti.find((abiliti) => abiliti.type === abiliti1);
-        //         const data2 = context.dataAbiliti.find((abiliti) => abiliti.type === abiliti2);
-
-        //         detalhes_ = {
-        //             id: getPokemon.data.id,
-        //             name: getPokemon.data.name,
-        //             image: image_Pokemon,
-        //             type1: getPokemon.data.types[0]?.type.name,
-        //             type2: getPokemon.data.types[1]?.type.name,
-        //             type1Img: data1?.img,
-        //             type2Img: data2?.img,
-        //             type1Color: data1?.bgc,
-        //             type2Color: data2?.bgc,
-        //             colorBackGround: data1?.colorCard,
-        //             // imageFrontPokemon: getPokemon.data.sprites.front_default,
-        //             // imageBackPokemon: getPokemon.data.sprites.back_default,
-        //             // stats: getPokemon.data.stats,
-        //             // moves: getPokemon.data.moves.filter((m, index) => index <= 3),
-        //             pathLastPage: location.pathname
-        //         }
-        //         setDetalhes(detalhes_)
-
-        //         context.setIsLoading(false)
-
-        //     } catch (error) {
-        //         console.log(error)
-        //     }
-        // })()
-     
+            
         (async ()=>{
             const result = await context.getDetailPokemon(pokemon.url)
             setDetails(result) 
@@ -119,7 +73,8 @@ export function Card(props) {
                 <S.Card colorbg={details?.colorBackGround}>
                     <S.IdentificationPokemon>
                         <S.Id>{context.formatId(details?.id)}</S.Id>
-                        <S.TitleCard>{context.firstLetterUpper(details?.name)}</S.TitleCard>
+                        {/* <S.TitleCard>{context.firstLetterUpper(details?.name)}</S.TitleCard> */}
+                        <S.TitleCard>{details?.name}</S.TitleCard>
                     </S.IdentificationPokemon>
 
                     <S.ImgPokemonCard2>                    
