@@ -13,8 +13,8 @@ import {
     ImgBackGroundCardDetail, BoxMoves, BoxStats, BoxImage,
     ContainerImage, DetailCard, DetailId,
     DetailName, SectionLeft, SectionRight,
-    Stats, StatsBar, StatsName, StatsVal, 
-    TitleInfo, Moves, Move,ImgPokemonDetail, ImageBackDetail
+    Stats, StatsBar, StatsName, StatsVal,
+    TitleInfo, Moves, Move, ImgPokemonDetail, ImageBackDetail
 } from './PokmonDetailsStyled'
 
 import { CardType } from '../../Components/Cardtype/CardType'
@@ -27,7 +27,7 @@ export function PokemonDetailPage() {
     const params = useParams()
 
     useEffect(() => {
-        (async ()=>{
+        (async () => {
             const URL = BASE_URL + params.namePokemon
             setDetailsPokemon(await context.getDetailPokemon(URL))
         })()
@@ -47,12 +47,14 @@ export function PokemonDetailPage() {
 
     function renderStats(stats, index) {
         statsTotal += stats.base_stat
-        return (<Stats key={index}>
-            <StatsName >{correctState(stats.stat.name)}</StatsName>
-            <StatsVal>{stats.base_stat}</StatsVal>
-            <StatsBar w={stats.base_stat}
-                color={correctState(stats.stat.name).includes("Sp.") ? "orange" : "red"}></StatsBar>
-        </Stats>)
+        return (<section key={index}>
+            <Stats>
+                <StatsName >{correctState(stats.stat.name)}</StatsName>
+                <StatsVal>{stats.base_stat}</StatsVal>
+                <StatsBar w={stats.base_stat}
+                    color={correctState(stats.stat.name).includes("Sp.") ? "orange" : "red"}></StatsBar>
+            </Stats>
+        </section>)
     }
 
     return (
@@ -71,7 +73,7 @@ export function PokemonDetailPage() {
                     !context.isLoading &&
                     <ContainerCard className="animate__animated animate__backInRight">
                         <DetailCard color={detailsPokemon?.colorBackGround}>
-                         <ImageBackDetail src={'/image/ballBackDetail.svg'}></ImageBackDetail> 
+                            <ImageBackDetail src={'/image/ballBackDetail.svg'}></ImageBackDetail>
                             <SectionLeft>
                                 <ContainerImage>
                                     <BoxImage>
@@ -89,7 +91,7 @@ export function PokemonDetailPage() {
                                                 renderStats(stats, index))
                                         }
                                     </>
-                                    <Stats>
+                                    <Stats total={true}>
                                         <StatsName>Total:</StatsName>
                                         <StatsVal bold={true}>{statsTotal}</StatsVal>
                                     </Stats>
@@ -111,7 +113,7 @@ export function PokemonDetailPage() {
                                     {
                                         detailsPokemon?.type2 ?
                                             <CardType
-                                            heightCard={'28px'}
+                                                heightCard={'28px'}
                                                 bgc={detailsPokemon?.type2Color}
                                                 image={detailsPokemon?.type2Img}
                                                 imageHeight={'18px'}

@@ -252,7 +252,8 @@ export function GlobalState() {
         imageFrontPokemon: getPokemon.data.sprites.front_default,
         imageBackPokemon: getPokemon.data.sprites.back_default,
         stats: getPokemon.data.stats,
-        moves: getPokemon.data.moves.filter((m, index) => index <= 3),
+        // moves: getPokemon.data.moves.filter((m, index) => index <= 3),
+        moves: getPokemon.data.moves.slice(0,4),
         pathLastPage: location.pathname
       }
       setIsLoading(false)

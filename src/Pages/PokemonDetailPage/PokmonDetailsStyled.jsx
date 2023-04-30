@@ -129,12 +129,14 @@ export const BoxStats = styled.div`
 export const Stats = styled.div`
     width: 100%;
     min-height:fit-content;
-    margin-top: 20px;
+    padding: 5px 0;
     display: grid;
     grid-template-columns: 50px 30px 70px;
     gap: 5px;
-    justify-content: flex-start;
-    
+    justify-content: flex-start;    
+    border-top: 1px solid rgba(9,5,4,.05);    
+    border-bottom: ${({total}) =>total ?"1px solid rgba(9,5,4,.05)" : "mone"};   
+
 `;
 
 export const StatsName = styled.div`
@@ -147,16 +149,15 @@ export const StatsVal = styled.div`
     text-align: center;
     font-size: 14px;
     font-weight: ${({ bold }) => bold ? "700" : "normal"} ;
-
 `;
 
 export const StatsBar = styled.div`
     background-color: ${({ color }) => color};
     width: ${({ w }) => w + "%"};
-    /* height: 12px; */
-    /* margin-top: 3px; */
-    z-index: 99999;
+    height: 10px;
+    margin-top: 2px;
     border-radius: 4px;
+    z-index: 99999;
 `;
 
 export const TitleInfo = styled.h2`
@@ -165,6 +166,7 @@ export const TitleInfo = styled.h2`
     font-style: normal;
     font-weight: 800;
     font-size: 18px;
+    margin-bottom: 14px;
 `;
 
 export const BoxMoves = styled(BoxStats)`
@@ -182,7 +184,7 @@ export const Moves = styled.div`
     display: flex ;
     flex-direction: column;
     gap: 12px;
-    margin-top: 8px;    
+    /* margin-top: 8px;     */
 `;
 
 export const Move = styled.button`
