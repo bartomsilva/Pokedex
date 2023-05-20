@@ -30,18 +30,20 @@ export const Id = styled.p`
   font-weight: 700;
   font-size: 16px;
 `;
-export const ImgPokemonCard = styled.img`
-  position: absolute;
-  height: 190px;
-  top: -60px;
-  right: 5px;
-  z-index: 100;
-  @media(max-width:480px){
-    height: 170px;
-    top: -50px;
-  }
+// export const ImgPokemonCard = styled.img`
+//   position: absolute;
+//   height: 190px;
+//   top: -60px;
+//   right: 5px;
+//   z-index: 100;
 
-`;
+//   /* @media(max-width:480px){
+//     height: 120px; // 170
+//     top: -50px;
+//     border: 5px solid red; 
+//   } */
+
+// `;
 
 export const ImgPokemonCard2 = styled.div`
   position: absolute;
@@ -55,10 +57,11 @@ export const ImgPokemonCard2 = styled.div`
       cursor: pointer;
       animation: ${pulse} 600ms linear infinite;
     }
-  }
-  @media(max-width:480px){
-    height: 170px;
-    top: -50px;
+    @media(max-width:480px){
+      margin-top: 20px;
+      height: 120px; // 170
+      top: 0;
+    }
   }
 
 `;

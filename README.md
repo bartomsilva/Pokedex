@@ -1,15 +1,18 @@
+<span id="home"></span>
 # Projeto Pokédex
 
-<img style='width: 300px' src='./public/image/Pokemon-1.webp'/>
+<img style='width: 300px' src='./public/image/projeto/Pokemon-1.webp'/>
 
-O Projeto Pokédex é um site constituído por três paginas,cujo objetivo é por em prática todo conteúdo que foi dado no módulo de Front-end.
+<p>O Projeto Pokédex é um site constituído por três paginas, cujo objetivo é por em prática todo conteúdo que foi dado no módulo de Front-end.</p>
 
-Os conteúdos principais a serem estudados são:
+Os conteúdos principais a serem aplicados são:
 
 - Integração de APIs
 - React Router
 - Design Systems
 - Estado Global
+
+<hr/>
 
 ## Índice
 
@@ -20,26 +23,31 @@ Os conteúdos principais a serem estudados são:
 - <a href="#requisitos">Requisitos do projeto</a>
 - <a href="#tecnologias">Tecnologias Utilizadas</a>
 - <a href="#author">Pessoas autoras</a>
-- <a href="#proximospassos">Próximos Passos</a>
-
+- <a href="#next">Próximos Passos</a>
 
 <span id='funcionalidades'></span>
 ## ⚒ Fucionalidades do Projeto
 
-O Projeto Pokédex apesar do seu funcionamento ser bem simples, requer sólidos conceitos programação, o projeto é constituído por três páginas: Home, Pokédex e Detalhes, na página home ficam todos pokémons disponívels onde o usuário tem a posibilidade de ver mais detalhes ou capturar o pokémon, ao ser capturado é exibida uma mensagem e ele desaparece da lista de disponíveis e passa a fazer parte da pokédex, já na pokédex o usuário também pode ver mais detalhes assim como pode remover o pokemón da pokedex. A fonte de dados é uma API pública (<a href='https://pokeapi.co/'>Pokeapi</a>) que é muito utilizada para fins acadêmicos e processos seletivos.
+O Projeto Pokédex apesar do seu funcionamento ser bem simples, requer sólidos conceitos de programação, o projeto é constituído por três páginas: Home, Pokédex e Detalhes, na página Home ficam todos pokémons disponíveis e o usuário tem a posibilidade de ver mais detalhes ou capturar o pokémon, ao ser capturado é exibida uma mensagem e ele desaparece da lista de disponíveis e passa a fazer parte da pokédex, já na pokédex o usuário também pode ver mais detalhes assim como pode remover o pokemón da pokedex. A fonte de dados é uma API pública (<a href='https://pokeapi.co/'>Pokeapi</a>) que é muito utilizada para fins acadêmicos e processos seletivos.
 
 <hr/>
 
 <span id="layout"></span>
 
-## Layout Desktop
+## ✍ Layout Desktop
 
-![image](https://user-images.githubusercontent.com/106079184/235358386-8a2475d4-c0d0-4f6a-80e5-11733113473a.png)
-![image](https://user-images.githubusercontent.com/106079184/235358406-e9f93d0e-63cb-4ef5-956e-b647d12c2197.png)
+![image](public/image/projeto/desktop1.png)
+![image](public/image/projeto/desktop2.png)
+![image](public/image/projeto/desktop3.png)
 
-![image](https://user-images.githubusercontent.com/106079184/235358428-5708fa95-2f10-4089-bf00-4593713dc0a6.png)
+## ✍ Layout Mobile
 
-
+<img style='height: 250px; width:150px' src='./public/image/projeto/mobile1.jpg' alt='layout mobile'/>
+<img style='height: 250px; width:150px' src='./public/image/projeto/mobile2.jpg' alt='layout mobile' />
+<img style='height: 250px; width:150px' src='./public/image/projeto/mobile3.jpg' alt='layout mobile' />
+<img style='height: 250px; width:150px' src='./public/image/projeto/mobile4.jpg' alt='layout mobile' />
+<img style='height: 250px; width:150px' src='./public/image/projeto/mobile5.jpg' alt='layout mobile' />
+<img style='height: 250px; width:150px' src='./public/image/projeto/mobile6.jpg' alt='layout mobile' />
 <hr/>
 
 <span id="link"></span>  
@@ -53,11 +61,11 @@ O Projeto Pokédex apesar do seu funcionamento ser bem simples, requer sólidos 
 
 ## 📄 Como rodar este projeto
 
-Caso queira baixar e instalar este projeto em seu computador, é necessário que tenha o git e o node instalados.
+<p>Caso queira baixar e instalar este projeto em seu computador, é necessário que tenha o git e o node instalados.</p>
 
 ### Links:  <a href="https://nodejs.org/en">Node</a> - <a href="https://git-scm.com/">Git</a>
 
-###  Se já tem ambos instalados ou após instalar, siga os passos abaixo:
+<p>Se já tem ambos instalados ou após instalar, siga os passos abaixo:</p>
 
 ```bash
 
@@ -116,19 +124,8 @@ yarn dev
 ## Responsividade
 
 ```
-Funcionando em Desktop, Tablet e Celulares.
+Responsivo em Desktop, Tablet e Celulares.
 ``` 
-<hr/>
-
-## Bibliotecas Utilizadas
-
-```
-- styled-components
-- axios
-- react-router-dom
-- react-lazy-load-image-component 
-- animate.css (entrada do card de detalhes)
-```
 <hr/>
 
 <span id="tecnologias"></span>
@@ -143,8 +140,14 @@ Funcionando em Desktop, Tablet e Celulares.
 
 <hr/>
 <span id="author"></span>
+
 ## 📫 Pessoas autoras
-<img style="width: 200px" src="https://avatars.githubusercontent.com/u/106079184?s=400&u=753f5466a77193fe7077e495475b242787de0435&v=4" alt="imagem do autor">
+
+<img style="width: 200px; border-radius: 50% 0 " src="https://avatars.githubusercontent.com/u/106079184?s=400&u=753f5466a77193fe7077e495475b242787de0435&v=4" alt="imagem do autor">
+<p>Bartolomeu Mariano ( Bart Silva )</p>
 
 linkedin: https://www.linkedin.com/in/bart-silva-br/
 
+<span id='next'></span>
+## Próximos passos
+- Refazer todo produto com NextJs

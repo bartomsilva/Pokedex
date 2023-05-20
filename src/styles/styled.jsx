@@ -32,6 +32,7 @@ export const HeaderCards = styled.div`
     @media(max-width:480px){
         height: 100px;
         justify-content: center;
+        margin-bottom: 20px;
     }
 `
 

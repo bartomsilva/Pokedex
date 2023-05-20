@@ -142,7 +142,6 @@ export const BoxImage = styled.div`
         height: 282px;
     }
 
-
 `
 export const BoxStats = styled.div`
     width: 265px;
@@ -150,14 +149,16 @@ export const BoxStats = styled.div`
     background-color: #fff;   
     border-radius: 12px ;
     padding: 15px 10px;
-    @media(max-width: 768px){
-        width: 245px;
-    }
     @media(min-width: 1400px){
         width: 343px;
         height: 600px;
     }
-
+    @media(max-width: 768px){
+        width: 245px;
+    }
+    @media(max-width: 480px){
+        width: 100%;
+    }
 `;
 
 export const Stats = styled.div`
@@ -211,6 +212,11 @@ export const BoxMoves = styled(BoxStats)`
     z-index: 99999;
     overflow: hidden;  
 
+    @media(max-width:480px){
+        width: 100%;
+        height: fit-content;         
+    }    
+
     @media(min-width:1400px){
         margin-top: 35px;
         width: 292px;
@@ -224,6 +230,12 @@ export const Moves = styled.div`
     display: flex ;
     flex-direction: column;
     gap: 12px;
+
+    @media(max-width:480px){
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
 `;
 
 export const Move = styled.button`

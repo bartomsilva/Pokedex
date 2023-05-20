@@ -73,7 +73,6 @@ export function Card(props) {
                 <S.Card colorbg={details?.colorBackGround}>
                     <S.IdentificationPokemon>
                         <S.Id>{context.formatId(details?.id)}</S.Id>
-                        {/* <S.TitleCard>{context.firstLetterUpper(details?.name)}</S.TitleCard> */}
                         <S.TitleCard>{details?.name}</S.TitleCard>
                     </S.IdentificationPokemon>
 
@@ -82,7 +81,6 @@ export function Card(props) {
                             effect="blur"
                         />
                     </S.ImgPokemonCard2>
-
 
                     <S.ImgShadowCard src={context.ballCard} alt="image background card" />
                     <S.CardTypes>
