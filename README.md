@@ -42,12 +42,19 @@ O Projeto Pokédex apesar do seu funcionamento ser bem simples, requer sólidos 
 
 ## ✍ Layout Mobile
 
-<img style='height: 250px; width:150px; display: inline-block' src='./public/image/projeto/mobile1.jpg' alt='layout mobile'/>
+![mobile1](./public/image/projeto/mobile1.jpg)
+![mobile2](./public/image/projeto/mobile2.jpg)
+![mobile3](./public/image/projeto/mobile3.jpg)
+![mobile4](./public/image/projeto/mobile4.jpg)
+![mobile5](./public/image/projeto/mobile5.jpg)
+![mobile6](./public/image/projeto/mobile6.jpg)
+
+<!-- <img style='height: 250px; width:150px; display: inline-block' src='./public/image/projeto/mobile1.jpg' alt='layout mobile'/>
 <img style='height: 250px; width:150px; display: inline-block' src='./public/image/projeto/mobile2.jpg' alt='layout mobile' />
 <img style='height: 250px; width:150px; display: inline-block' src='./public/image/projeto/mobile3.jpg' alt='layout mobile' />
 <img style='height: 250px; width:150px; display: inline-block' src='./public/image/projeto/mobile4.jpg' alt='layout mobile' />
 <img style='height: 250px; width:150px; display: inline-block' src='./public/image/projeto/mobile5.jpg' alt='layout mobile' />
-<img style='height: 250px; width:150px; display: inline-block' src='./public/image/projeto/mobile6.jpg' alt='layout mobile' />
+<img style='height: 250px; width:150px; display: inline-block' src='./public/image/projeto/mobile6.jpg' alt='layout mobile' /> -->
 <hr/>
 
 <span id="link"></span>  
@@ -150,4 +157,4 @@ linkedin: https://www.linkedin.com/in/bart-silva-br/
 
 <span id='next'></span>
 ## Próximos passos
-- Refazer todo produto com NextJs
+- Refazer todo projeto utilizando NextJs.
