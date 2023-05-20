@@ -113,17 +113,16 @@ yarn dev
 	- [x] Em cada card de Pokémon tem um botão para adicioná-lo à Pokédex e um outro botão para acessar os detalhes do Pokémon;
 	- [x] Header dessa página terá um botão para acessar a página da Pokédex
 - **Página Pokédex**
-	- [x] Renderizar a lista de pokémons adicionados na pokedex;
-	- [x] Em cada card de Pokémon deve ter um botão para removê-lo da Pokédex e um outro botão para acessar os detalhes do Pokémon.
-	- [x] Header deve ter um botão para voltar para a Home
-	- [x] Não deve ser possível adicionar o mesmo Pokémon duas vezes na Pokédex
+	- [x] Renderizar a lista de pokémons adicionados na pokédex;
+	- [x] Em cada card de Pokémon deve ter um botão para removê-lo da Pokédex e um outro botão para acessar os detalhes do Pokémon;
+	- [x] Header deve ter um botão para voltar para a Home;
+	- [x] Não deve ser possível adicionar o mesmo Pokémon duas vezes na Pokédex;
 - **Página de Detalhes**
-	- [x] Mostrar os detalhes do Pokémon selecionado, com informações descritas
-	- [x] Header deve ter um botão para adicionar ou remover da Pokédex e outro para voltar a página home.
+	- [x] Mostrar os detalhes do Pokémon selecionado, com informações descritas;
+	- [x] Header deve ter um botão para adicionar ou remover da Pokédex e outro para voltar a página home;
 
 	<h4 style='color:yellow'>obs: informação no coda conflitante com este ítem acima, por esse motivo
 	deixe os dois links.</h4>
-
 
 
 	![coda](./public/image/projeto/nocoda.png)
