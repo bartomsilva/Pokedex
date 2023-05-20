@@ -120,11 +120,21 @@ yarn dev
 - **Página de Detalhes**
 	- [x] Mostrar os detalhes do Pokémon selecionado, com informações descritas
 	- [x] Header deve ter um botão para adicionar ou remover da Pokédex e outro para voltar a página home.
+
+	<h4 style='color:yellow'>obs: informação no coda conflitante com este ítem acima, por esse motivo
+	deixe os dois links.</h4>
+
+
+
+	![coda](./public/image/projeto/nocoda.png)
+	
+	![coda](./public/image/projeto/coda1.png)
+
 - [x] [Criar um readme](https://www.youtube.com/watch?v=1QKwP0SJK-c "Crie um readme") para o projeto;
 
 ### Funções implemetadas
 ```
- Além do que foi solicitado, acrecentei paginação e uma página de erro.
+ Além do que foi solicitado, acrecentei paginação e uma página de erro, além do botão voltar para Pokédex seguindo recomendação do coda.
 ```
 <hr/>
 
