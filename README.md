@@ -1,4 +1,4 @@
-# Projeto Pokedéx
+# Projeto Pokédex
 
 <img style='width: 300px' src='./public/image/Pokemon-1.webp'/>
 
@@ -53,7 +53,7 @@ O Projeto Pokédex apesar do seu funcionamento ser bem simples, requer sólidos 
 
 ## 📄 Como rodar este projeto
 
-### Caso queira baixar e instalar este projeto em seu computador, é necessário que tenha o git e o node instalados.
+Caso queira baixar e instalar este projeto em seu computador, é necessário que tenha o git e o node instalados.
 
 ### Links:  <a href="https://nodejs.org/en">Node</a> - <a href="https://git-scm.com/">Git</a>
 
@@ -109,7 +109,7 @@ yarn dev
 
 ### Funções implemetadas
 ```
- Além do que foi folicitado, acrecentei paginação e uma página de erro.
+ Além do que foi solicitado, acrecentei paginação e uma página de erro.
 ```
 <hr/>
 

@@ -136,6 +136,7 @@ export const Detail = styled.a`
   bottom: 29px;
   left: 25px;
   cursor: pointer;
+
 `;
 
 export const BtnCapture = styled.button`
@@ -154,13 +155,12 @@ export const BtnCapture = styled.button`
   position: absolute;
   right: 16px;
   bottom: 22px;
-  :active{
+  transition-duration: 300ms;
+  &:active{
     transform: scale(0.94);
-    transition-duration: 200ms;
   }
-  :hover{
-    transform: scale(1.1);
-    transition-duration: 200ms;
+  &:hover{
+    /* transform: scale(1.1); */
     color: ${({ colorBackground }) => colorBackground};
     background-color: ${({ colorFont }) => colorFont};
   }

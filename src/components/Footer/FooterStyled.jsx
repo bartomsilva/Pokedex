@@ -9,7 +9,7 @@ export const ContainerFooter = styled.footer`
     justify-content: center;
     align-items: center;
     height: 40px;
-    background-color: black;
+    /* background-color: black; */
     button{
         border: none;
         border-radius: 12px;
@@ -40,6 +40,12 @@ export const ContainerButtons = styled.section`
     justify-content: center;
     align-items: center;
     gap: 10px;   
+    transition-duration: 300ms;
+    button { 
+        &:hover{
+        transform: scale(1.1);
+        }
+    }
     @media(max-width: 768px){
         position: absolute;
         left: 25px;

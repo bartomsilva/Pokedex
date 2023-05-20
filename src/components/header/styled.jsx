@@ -102,6 +102,10 @@ export const BtnPokedex = styled.button`
     font-weight: normal;
     padding: 0 5px;
     cursor: pointer;
+    transition-duration: 300ms;
+    &:hover{
+        transform: scale(1.1);
+    }
 
     @media(max-width:768px){
         width: 130px;
