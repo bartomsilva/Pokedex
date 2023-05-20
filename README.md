@@ -28,7 +28,7 @@ Os conteúdos principais a serem aplicados são:
 <span id='funcionalidades'></span>
 ## ⚒ Fucionalidades do Projeto
 
-O Projeto Pokédex apesar do seu funcionamento ser bem simples, requer sólidos conceitos de programação, o projeto é constituído por três páginas: Home, Pokédex e Detalhes, na página Home ficam todos pokémons disponíveis e o usuário tem a posibilidade de ver mais detalhes ou capturar o pokémon, ao ser capturado é exibida uma mensagem e ele desaparece da lista de disponíveis e passa a fazer parte da pokédex, já na pokédex o usuário também pode ver mais detalhes assim como pode remover o pokémon da pokédex. A fonte de dados é uma API pública (<a href='https://pokeapi.co/'>Pokeapi</a>) que é muito utilizada para fins acadêmicos e processos seletivos.
+O Projeto Pokédex apesar do seu funcionamento ser bem simples, requer sólidos conceitos de programação, o projeto é constituído por três páginas: Home, Pokédex e Detalhes, na página Home ficam todos pokémons disponíveis e o usuário tem a possibilidade de ver mais detalhes ou capturar o pokémon, ao ser capturado é exibida uma mensagem e ele desaparece da lista de disponíveis e passa a fazer parte da pokédex, já na pokédex o usuário também pode ver mais detalhes assim como pode remover o pokémon da pokédex. A fonte de dados é uma API pública (<a href='https://pokeapi.co/'>Pokeapi</a>) que é muito utilizada para fins acadêmicos e processos seletivos.
 
 <hr/>
 
@@ -104,22 +104,22 @@ yarn dev
 
 ### **Requisitos**
 - **Gerais:**
-	- [x] O site deve ter 3 páginas: Home, Pokedex e Detalhes;
+	- [x] O site deve ter 3 páginas: Home, Pokédex e Detalhes;
 	- [x] Projeto deve seguir o [design](https://www.figma.com/file/KseyA2Ofghiek2Cy3ZaDre/Poked%C3%A9x?t=AEi3zEmWmarf1FbP-0 "design") proposto;
 	- [x] O fluxo de trocas de páginas devem ser semelhante ao [fluxograma](https://www.figma.com/proto/KseyA2Ofghiek2Cy3ZaDre/Poked%C3%A9x?page-id=0%3A1&node-id=2%3A2&viewport=358%2C197%2C0.27&scaling=scale-down&starting-point-node-id=2%3A2 "fluxograma");
 - **Página Home:**
-	- [x]  Mostrar uma lista de Pokemons, contendo ao menos 20 Pokemons;
-	- [x] Cada Pokemon será representado por um Card;
-	- [x] Em cada card de Pokemon tem um botão para adicioná-lo à Pokedex e um outro botão para acessar os detalhes do Pokemon;
-	- [x] Header dessa página terá um botão para acessar a página da Pokedex
+	- [x]  Mostrar uma lista de Pokémons, contendo ao menos 20 Pokémons;
+	- [x] Cada Pokémon será representado por um Card;
+	- [x] Em cada card de Pokémon tem um botão para adicioná-lo à Pokédex e um outro botão para acessar os detalhes do Pokémon;
+	- [x] Header dessa página terá um botão para acessar a página da Pokédex
 - **Página Pokédex**
 	- [x] Renderizar a lista de pokémons adicionados na pokedex;
-	- [x] Em cada card de Pokemon deve ter um botão para removê-lo da Pokedex e um outro botão para acessar os detalhes do Pokemon.
+	- [x] Em cada card de Pokémon deve ter um botão para removê-lo da Pokédex e um outro botão para acessar os detalhes do Pokémon.
 	- [x] Header deve ter um botão para voltar para a Home
-	- [x] Não deve ser possível adicionar o mesmo Pokemon duas vezes na Pokedex
+	- [x] Não deve ser possível adicionar o mesmo Pokémon duas vezes na Pokédex
 - **Página de Detalhes**
-	- [x] Mostrar os detalhes do Pokemon selecionado, com informações descritas
-	- [x] Header deve ter um botão para adicionar ou remover da Pokedex e outro para voltar a página home.
+	- [x] Mostrar os detalhes do Pokémon selecionado, com informações descritas
+	- [x] Header deve ter um botão para adicionar ou remover da Pokédex e outro para voltar a página home.
 - [x] [Criar um readme](https://www.youtube.com/watch?v=1QKwP0SJK-c "Crie um readme") para o projeto;
 
 ### Funções implemetadas
