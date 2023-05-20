@@ -5,9 +5,10 @@ const GlobalStyled = createGlobalStyle`
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  max-width: 1440px;
+
 };
 :root{
-    max-width: 1360px;
     min-height: 100vh;
     margin: 0 auto;
   }

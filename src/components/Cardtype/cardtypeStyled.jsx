@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Box = styled.div`
-    width: fit-content;
+    width: ${({w})=>w?w:"fit-content"}t;
     height: ${({h})=>h};
     display: flex;
     justify-content: space-between;

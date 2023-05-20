@@ -22,13 +22,13 @@ import { CardType } from '../../Components/Cardtype/CardType'
 export function PokemonDetailPage() {
 
     const [detailsPokemon, setDetailsPokemon] = useState()
-
     const context = useContext(GlobalContext)
+    
     const params = useParams()
-
+    
     useEffect(() => {
         (async () => {
-            const URL = BASE_URL + params.namePokemon
+            const URL = BASE_URL + params?.namePokemon
             setDetailsPokemon(await context.getDetailPokemon(URL))
         })()
     }, [])
@@ -76,10 +76,10 @@ export function PokemonDetailPage() {
                             <SectionLeft>
                                 <ContainerImage>
                                     <BoxImage>
-                                        <img src={detailsPokemon?.imageFrontPokemon} alt="" />
+                                        <img src={detailsPokemon?.imageFrontPokemon || context.noImage} alt="" />
                                     </BoxImage>
                                     <BoxImage>
-                                        <img src={detailsPokemon?.imageBackPokemon} alt="" />
+                                        <img src={detailsPokemon?.imageBackPokemon || context.noImage} alt="" />
                                     </BoxImage>
                                 </ContainerImage>
                                 <BoxStats>
@@ -96,14 +96,16 @@ export function PokemonDetailPage() {
                                     </Stats>
                                 </BoxStats>
                             </SectionLeft>
+
                             <SectionRight>
                                 <DetailId>{context.formatId(detailsPokemon?.id)}</DetailId>
                                 <DetailName>{detailsPokemon?.name}</DetailName>
-                                <ImgBackGroundCardDetail src={context.ballCard} alt="" />
+                                <ImgBackGroundCardDetail src={'/image/pngwing2.svg'} alt="" />
                                 <ImgPokemonDetail src={detailsPokemon?.image} alt="" />
                                 <ContainerTypes>
                                     <CardType
-                                        heightCard={'28px'}
+                                        heightCard={'31px'}
+                                        widthCard={'91px'}
                                         bgc={detailsPokemon?.type1Color}
                                         image={detailsPokemon?.type1Img}
                                         imageHeight={'18px'}
@@ -111,7 +113,8 @@ export function PokemonDetailPage() {
                                     {
                                         detailsPokemon?.type2 ?
                                             <CardType
-                                                heightCard={'28px'}
+                                                heightCard={'31px'}
+                                                widthCard={'91px'}
                                                 bgc={detailsPokemon?.type2Color}
                                                 image={detailsPokemon?.type2Img}
                                                 imageHeight={'18px'}

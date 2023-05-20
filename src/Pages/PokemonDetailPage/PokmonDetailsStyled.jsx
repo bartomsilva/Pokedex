@@ -20,11 +20,17 @@ export const DetailCard = styled.div`
     background-color: ${({ color }) => color};
     border-radius: 20px;        
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    
-    @media(max-width: 768px){
+
+    @media(max-width: 900px){
+        width: 100vw;
+        flex-direction: column-reverse;
+        height: fit-content;
+        // imagem principal vai par o centro.
+        
+    }
+    @media(max-width: 768px){ 
         width: 100vw;
         height: fit-content;
         padding-bottom: 30px;
@@ -33,10 +39,17 @@ export const DetailCard = styled.div`
         justify-content: center;
         align-items: center;
     }
+
+    @media(min-width: 1400px){
+        width: 1389.14px;
+        height: 663px;
+        align-items: center;
+    }
+
 `
 
 export const SectionLeft = styled.section`
-    width: 390px;
+    /* width: 390px; */
     width: 560px;
     height: 390px;
     padding: 10px 0 0 5px;
@@ -53,6 +66,13 @@ export const SectionLeft = styled.section`
         height: fit-content;
         padding: 10px 0;
      }   
+
+    @media(min-width: 1400px){
+        width: 695px;
+        height: 660px;
+        padding: 30px 0 30px 20px;
+    }
+
 `
 
 export const SectionRight = styled.section`
@@ -72,7 +92,12 @@ export const SectionRight = styled.section`
         justify-content: center;
         align-items: center;
     }
-
+    @media(min-width: 1400px){
+        padding-top: 20px ;
+        width: 694px;
+        height: 660px;
+    }
+   
 `
 
 
@@ -91,7 +116,6 @@ export const ContainerImage = styled.div`
         align-items: center;
         height: fit-content;
         margin: 0;
-
     }
 
   `
@@ -113,6 +137,12 @@ export const BoxImage = styled.div`
         margin-bottom: 20px ;
     }
 
+    @media(min-width: 1400px){
+        width: 282px;
+        height: 282px;
+    }
+
+
 `
 export const BoxStats = styled.div`
     width: 265px;
@@ -123,15 +153,20 @@ export const BoxStats = styled.div`
     @media(max-width: 768px){
         width: 245px;
     }
+    @media(min-width: 1400px){
+        width: 343px;
+        height: 600px;
+    }
+
 `;
 
 export const Stats = styled.div`
     width: 100%;
     min-height:fit-content;
-    padding: 5px 0;
+    padding: 3px 0;
     display: grid;
-    grid-template-columns: 50px 30px 70px;
-    gap: 5px;
+    grid-template-columns: 70px 50px 100px;
+    gap: 9px;
     justify-content: flex-start;    
     border-top: 1px solid rgba(9,5,4,.05);    
     border-bottom: ${({total}) =>total ?"1px solid rgba(9,5,4,.05)" : "mone"};   
@@ -140,32 +175,31 @@ export const Stats = styled.div`
 
 export const StatsName = styled.div`
     text-align: right;
-    font-size: 14px;
+    font-size: 18px;
 `;
 
 
 export const StatsVal = styled.div`
     height: 8px;
     text-align: center;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: ${({ bold }) => bold ? "700" : "normal"} ;
 `;
 
 export const StatsBar = styled.div`
     background-color: ${({ color }) => color};
     width: ${({ w }) => w + "%"};
-    height: 10px;
+    height: 18px;
     margin-top: 2px;
     border-radius: 4px;
     z-index: 99999;
 `;
 
 export const TitleInfo = styled.h2`
-
     font-family: 'Inter';
     font-style: normal;
     font-weight: 800;
-    font-size: 18px;
+    font-size: 30px;
     margin-bottom: 14px;
 `;
 
@@ -175,7 +209,13 @@ export const BoxMoves = styled(BoxStats)`
     height: 100%;
     padding-top: 8px;
     z-index: 99999;
-    overflow: hidden;      
+    overflow: hidden;  
+
+    @media(min-width:1400px){
+        margin-top: 35px;
+        width: 292px;
+        height: 453px;       
+    }    
 `;
 
 export const Moves = styled.div`
@@ -184,19 +224,25 @@ export const Moves = styled.div`
     display: flex ;
     flex-direction: column;
     gap: 12px;
-    /* margin-top: 8px;     */
 `;
 
 export const Move = styled.button`
-width: 110px;
-height: 30px;
-font-family: 'Montserrat';
-font-style: normal;
-font-weight: 400;
-font-size: 13px;
-background: #ECECEC;
-border: 1px dashed rgba(0, 0, 0, 0.14);
-border-radius: 12px;
+    width: fit-content;
+    height: 30px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    background: #ECECEC;
+    border: 1px dashed rgba(0, 0, 0, 0.14);
+    border-radius: 12px;
+    padding: 0 10px;
+
+    @media(min-width: 1400px){
+        height: 45px;
+        font-size: 18px;
+    }  
+
 `;
 
 export const BoxIdentification = styled.div`    
@@ -220,16 +266,24 @@ export const DetailName = styled.p`
     ::first-letter{
         text-transform: uppercase;
     }
+    @media(min-width:1400px){
+        font-size: 48px;
+    }
 `;
 
 export const ImgBackGroundCardDetail = styled.img`
     position: absolute;
     top: 0;
-    right: 0px;
+    right: 0;
     height: 100%;
-    height: 440px;
+    height: 400px; 
+
     @media(max-width: 768px){
         display: none;
+    }
+    @media(min-width: 1400px){
+        right: 10px;
+        height: 100%;
     }
 `;
 
@@ -238,6 +292,12 @@ export const ImgPokemonDetail = styled.img`
     top: -105px;
     right: 20px;
     width: 180px;
+    @media(max-width: 900px){
+        top:10%;
+        left: 50%;      
+        width: 250px;          
+    }
+
     @media(max-width: 768px){
         position: static;
     }
@@ -245,6 +305,12 @@ export const ImgPokemonDetail = styled.img`
       animation: ${pulse} 600ms linear infinite;
       cursor: pointer;
     }
+    @media(min-width: 1400px){
+        width: 270px;
+        height: 270px;
+    }
+  
+
  `;
 
 

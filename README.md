@@ -1,80 +1,138 @@
-## 📖 Introdução
+# Projeto Pokedéx
 
-Pokédex - Olá, este é mais um projeto do módulo Front-end do curso Desenvolvedor Web Full Stack da Labenu, neste projeto foram aplicatos os coceitos de Rotas,
-Estado Global e acesso a Api, elém de trabalhar as técnicas de componetização e reutilização de componentes, apesar de ser um projeto extremamente simples, 
-me porporcionou muitas oportunidades de observar o compotamento as variáveis de estado dentro de um contexto global, assim como trabalhar com as Promises,
-posso dizer que cresci bastante com este projeto, confesso que antes achava que não iria me agragar nada, mas ao ler e estudar o projeto, trabalhando nele,
-vi sua grandeza e o quanto poderia contribuir para meu desenvovimento. 
+<img style='width: 300px' src='./public/image/Pokemon-1.webp'/>
 
-## 🔗Link de Acesso
-Deploy Surge: [clique aqui!](http://bart-silva-pokedex.surge.sh/).
+O Projeto Pokédex é um site constituído por três paginas,cujo objetivo é por em prática todo conteúdo que foi dado no módulo de Front-end.
 
-📄Concepção do Projeto
+Os conteúdos principais a serem estudados são:
 
-## Criação
+- Integração de APIs
+- React Router
+- Design Systems
+- Estado Global
 
-- Utilizei o VITE
+## Índice
 
-### Instalando
+- <a href="#funcionalidades">Funcionalidades do Projeto</a>
+- <a href="#layout">Layout</a>
+- <a href="#link">Visualizar este projeto</a>
+- <a href="#comorodar">Como rodar este projeto</a>
+- <a href="#requisitos">Requisitos do projeto</a>
+- <a href="#tecnologias">Tecnologias Utilizadas</a>
+- <a href="#author">Pessoas autoras</a>
+- <a href="#proximospassos">Próximos Passos</a>
+
+
+<span id='funcionalidades'></span>
+## ⚒ Fucionalidades do Projeto
+
+O Projeto Pokédex apesar do seu funcionamento ser bem simples, requer sólidos conceitos programação, o projeto é constituído por três páginas: Home, Pokédex e Detalhes, na página home ficam todos pokémons disponívels onde o usuário tem a posibilidade de ver mais detalhes ou capturar o pokémon, ao ser capturado é exibida uma mensagem e ele desaparece da lista de disponíveis e passa a fazer parte da pokédex, já na pokédex o usuário também pode ver mais detalhes assim como pode remover o pokemón da pokedex. A fonte de dados é uma API pública (<a href='https://pokeapi.co/'>Pokeapi</a>) que é muito utilizada para fins acadêmicos e processos seletivos.
+
+<hr/>
+
+<span id="layout"></span>
+
+## Layout Desktop
+
+![image](https://user-images.githubusercontent.com/106079184/235358386-8a2475d4-c0d0-4f6a-80e5-11733113473a.png)
+![image](https://user-images.githubusercontent.com/106079184/235358406-e9f93d0e-63cb-4ef5-956e-b647d12c2197.png)
+
+![image](https://user-images.githubusercontent.com/106079184/235358428-5708fa95-2f10-4089-bf00-4593713dc0a6.png)
+
+
+<hr/>
+
+<span id="link"></span>  
+## 🔗 Demonstração<br/>
+[Link do projeto!](http://bart-silva-pokedex.surge.sh/).
+
+<br/>
+<span id='comorodar'></span>
+ 
+<hr/>
+
+## 📄 Como rodar este projeto
+
+### Caso queira baixar e instalar este projeto em seu computador, é necessário que tenha o git e o node instalados.
+
+### Links:  <a href="https://nodejs.org/en">Node</a> - <a href="https://git-scm.com/">Git</a>
+
+###  Se já tem ambos instalados ou após instalar, siga os passos abaixo:
+
 ```bash
-# Instalando dependências
+
+# Copie o link a baixo
+
+  https://github.com/bartomsilva/Pokedex.git
+
+# Abra um terminal e digite o seguinte comando
+
+git clone (cole a url aqui)
+
+# acesse a página criada 
+
+cd Pokedex
+
+# Instale as dependências
 yarn install
 
 # Executando o Projeto
 yarn dev
+
 ```
 
-### Layout Mobile
+<hr/>
 
-|![image](https://user-images.githubusercontent.com/106079184/235358102-e0d0689d-2ace-4d08-8e40-160d8b88551d.png)
-|![image](https://user-images.githubusercontent.com/106079184/235358119-ab0a958a-1ab3-4205-a777-99f78d0739f1.png)
-|![image](https://user-images.githubusercontent.com/106079184/235358214-47d5bc62-2dc3-41cb-a375-5459ec3a77fe.png)
-|![image](https://user-images.githubusercontent.com/106079184/235358236-4ae1aaba-6d89-4255-9c7f-49bbf41881fa.png)
+<span id='requisitos'></span>
 
-### Layout Desktop
+## Requisitos do Projeto 
 
-![image](https://user-images.githubusercontent.com/106079184/235358386-8a2475d4-c0d0-4f6a-80e5-11733113473a.png)
-![image](https://user-images.githubusercontent.com/106079184/235358406-e9f93d0e-63cb-4ef5-956e-b647d12c2197.png)
-![image](https://user-images.githubusercontent.com/106079184/235358428-5708fa95-2f10-4089-bf00-4593713dc0a6.png)
-
-
-## Requisitos do Projeto / Funcionalidades
-```bash
-Esse projeto possui apenas três páginas: Home, Pokedex e Página de detalhes.
-
-# Home
-O usuário recebe uma lista, a qual está vindo de pokemons API. Nesta lista ele terá a possibilidade de clicar, em cada, e armazenar Pokemons em sua Pokedex. 
-
-# Pokedex
-Lá o usuário verá os Pokemons que foram adicionados em sua Pokedex.
-
-# Detalhes do Pokemon
-Os detalhes do pokemon podem ser acessados, ao ser clicado, tanto quando estão na página de Home ou na Pokedex.
-```
+### **Requisitos**
+- **Gerais:**
+	- [x] O site deve ter 3 páginas: Home, Pokedex e Detalhes;
+	- [x] Projeto deve seguir o [design](https://www.figma.com/file/KseyA2Ofghiek2Cy3ZaDre/Poked%C3%A9x?t=AEi3zEmWmarf1FbP-0 "design") proposto;
+	- [x] O fluxo de trocas de páginas devem ser semelhante ao [fluxograma](https://www.figma.com/proto/KseyA2Ofghiek2Cy3ZaDre/Poked%C3%A9x?page-id=0%3A1&node-id=2%3A2&viewport=358%2C197%2C0.27&scaling=scale-down&starting-point-node-id=2%3A2 "fluxograma");
+- **Página Home:**
+	- [x]  Mostrar uma lista de Pokemons, contendo ao menos 20 Pokemons;
+	- [x] Cada Pokemon será representado por um Card;
+	- [x] Em cada card de Pokemon tem um botão para adicioná-lo à Pokedex e um outro botão para acessar os detalhes do Pokemon;
+	- [x] Header dessa página terá um botão para acessar a página da Pokedex
+- **Página Pokédex**
+	- [x] Renderizar a lista de pokémons adicionados na pokedex;
+	- [x] Em cada card de Pokemon deve ter um botão para removê-lo da Pokedex e um outro botão para acessar os detalhes do Pokemon.
+	- [x] Header deve ter um botão para voltar para a Home
+	- [x] Não deve ser possível adicionar o mesmo Pokemon duas vezes na Pokedex
+- **Página de Detalhes**
+	- [x] Mostrar os detalhes do Pokemon selecionado, com informações descritas
+	- [x] Header deve ter um botão para adicionar ou remover da Pokedex e outro para voltar a página home.
+- [x] [Criar um readme](https://www.youtube.com/watch?v=1QKwP0SJK-c "Crie um readme") para o projeto;
 
 ### Funções implemetadas
-Além do que foi folicitado, acrescentei apenas uma paginação simples na página principal e uma página de erro, no intuito de aprendizagem.
-
-![image](https://user-images.githubusercontent.com/106079184/235359119-015e953b-fa5a-47fe-bfdf-a84e5664d027.png)
-
-### Responsividade
-Funcionando em Desktop, Tablet e Celulares.
-
-#### Bibliotecas Utilizadas
-```bash
-styled-components
-axios
-react-router-dom
-react-lazy-load-image-component 
-react-speech-kit (voz na imagem do card)
-animate.css (entrada do card de detalhes)
 ```
+ Além do que foi folicitado, acrecentei paginação e uma página de erro.
+```
+<hr/>
 
-💡Programas utilizados:
+## Responsividade
 
-VSCode
+```
+Funcionando em Desktop, Tablet e Celulares.
+``` 
+<hr/>
 
-💻Tecnologias
+## Bibliotecas Utilizadas
+
+```
+- styled-components
+- axios
+- react-router-dom
+- react-lazy-load-image-component 
+- animate.css (entrada do card de detalhes)
+```
+<hr/>
+
+<span id="tecnologias"></span>
+## 💻 Tecnologias
 
 ![HTML](https://user-images.githubusercontent.com/106079184/227619911-eb73aabd-7739-47c0-bbcb-e0920902ead3.png)
 ![Javascript](https://user-images.githubusercontent.com/106079184/227620446-5307c4f2-0af2-4b7d-8696-a17780a13148.png)
@@ -83,7 +141,10 @@ VSCode
 ![Styled-Components](https://user-images.githubusercontent.com/106079184/227621509-7956f644-df78-41b1-a26d-ec88112b7de1.png)
 ![Git](https://user-images.githubusercontent.com/106079184/227621865-d6fd9ff4-2e10-4f7f-9759-f31c6434b565.png)
 
+<hr/>
+<span id="author"></span>
+## 📫 Pessoas autoras
+<img style="width: 200px" src="https://avatars.githubusercontent.com/u/106079184?s=400&u=753f5466a77193fe7077e495475b242787de0435&v=4" alt="imagem do autor">
 
-📫 Contato
 linkedin: https://www.linkedin.com/in/bart-silva-br/
 
