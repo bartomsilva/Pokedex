@@ -5,10 +5,11 @@ export const ExternalModal = styled.div`
     position: fixed;
     top:0;
     left: 0;
-    width: 100%;
+    min-width: 100vw;
     min-height: 1000vh;
     z-index: 9999998;
     background-color: rgba(0,0,0,0.6);
+
 `
 
 export const MainModal = styled.div`
