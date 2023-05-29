@@ -9,6 +9,9 @@ export const ExternalModal = styled.div`
     min-height: 1000vh;
     z-index: 9999998;
     background-color: rgba(0,0,0,0.6);
+    @media(min-width: 1366px){
+        min-width: 100vw;
+    }
 `
 
 export const MainModal = styled.div`
